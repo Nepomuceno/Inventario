@@ -1,14 +1,16 @@
 ﻿using System;
 using System.Windows.Forms;
 using Sirius.Coletor.Base;
+using Sirius.Coletor.Dados;
 using Sirius.Coletor.Views;
 
 namespace Sirius.Coletor
 {
     static class Program
     {
+        public static string Caminho { get { return Environment.GetFolderPath(Environment.SpecialFolder.Programs); } }
         public static Operador Operador { get; set; }
-
+        public static Banco Banco { get; private set; }
 
         /// <summary>
         /// The main entry point for the application.
@@ -16,6 +18,8 @@ namespace Sirius.Coletor
         [MTAThread]
         static void Main()
         {
+            Banco = new Banco();
+            Banco.Carregar(Caminho);
             Application.Run(new FrmLogin());
         }
         

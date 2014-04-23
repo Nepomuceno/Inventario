@@ -46,6 +46,15 @@
   </PropertyGroup>
   <ItemGroup>
     <Reference Include="mscorlib" />
+    <Reference Include="Newtonsoft.Json.Compact, Version=3.5.0.0, Culture=neutral, PublicKeyToken=30ad4fe6b2a6aeed, processorArchitecture=MSIL" />
+    <Reference Include="Symbol, Version=1.6.1.4, Culture=neutral, PublicKeyToken=68ec8db391f150ca">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\Symbol\Symbol.dll</HintPath>
+    </Reference>
+    <Reference Include="Symbol.Barcode, Version=1.6.1.18, Culture=neutral, PublicKeyToken=68ec8db391f150ca">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\Symbol\Symbol.Barcode.dll</HintPath>
+    </Reference>
     <Reference Include="System" />
     <Reference Include="System.Core" />
     <Reference Include="System.Xml.Linq" />
@@ -62,6 +71,7 @@
     <Compile Include="Base\Leitura.cs" />
     <Compile Include="Base\Localizacao.cs" />
     <Compile Include="Base\Operador.cs" />
+    <Compile Include="Base\Produto.cs" />
     <Compile Include="Base\TipoInventario.cs" />
     <Compile Include="Base\TipoLeitura.cs" />
     <Compile Include="Base\TipoUsuario.cs" />
@@ -98,6 +108,10 @@
     <Compile Include="Views\ViewLogin.Designer.cs">
       <DependentUpon>ViewLogin.cs</DependentUpon>
     </Compile>
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Binarios\Newtonsoft.Json.Compact.dll" />
+    <Content Include="Binarios\Newtonsoft.Json.Compact.xml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="Models\" />

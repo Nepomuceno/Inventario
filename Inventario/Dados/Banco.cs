@@ -2,14 +2,16 @@
 using System.IO;
 using System.Xml.Serialization;
 using Sirius.Coletor.Base;
+using Newtonsoft.Json;
 
 namespace Sirius.Coletor.Dados
 {
     public class Banco
     {
-        private const string CAMINHO_INVENTARIO = "/Inventarios.xml";
-        private const string CAMINHO_OPERADORES = "/Operadores.xml";
-        private const string CAMINHO_FILIAIS = "/Filials.xml";
+        private const string CAMINHO_INVENTARIO = "/Inventarios.json";
+        private const string CAMINHO_OPERADORES = "/Operadores.json";
+        private const string CAMINHO_FILIAIS = "/Filials.json";
+        private const string CAMINHO_PRODUTOS = "/Produtos.json";
 
         public Colecao<Inventario> Inventarios { get; set; }
         
@@ -17,27 +19,42 @@ namespace Sirius.Coletor.Dados
         
         public Colecao<Filial> Filials { get; set; }
 
+        public Colecao<Produto> Produtos { get; set; }
+
         public void Carregar(string caminho)
         {
-            var serializerInventario = new XmlSerializer(typeof(Colecao<Inventario>));
-            Inventarios = serializerInventario.Deserialize(File.Open(Path.Combine(caminho,CAMINHO_INVENTARIO),FileMode.OpenOrCreate)) as Colecao<Inventario>;
-            var serializerOperador = new XmlSerializer(typeof (Colecao<Operador>));
-            Operadores = serializerOperador.Deserialize(File.Open(Path.Combine(caminho, CAMINHO_OPERADORES), FileMode.OpenOrCreate)) as Colecao<Operador>;
-            var serializerFilials = new XmlSerializer(typeof(Colecao<Filial>));
-            Filials = serializerFilials.Deserialize(File.Open(Path.Combine(caminho, CAMINHO_FILIAIS), FileMode.OpenOrCreate)) as Colecao<Filial>;
+            var serializer = new JsonSerializer();
+
+            var stream = File.Open(Path.Combine(caminho, CAMINHO_INVENTARIO), FileMode.OpenOrCreate);
+            Inventarios = serializer.Deserialize <Colecao<Inventario>>(new JsonTextReader(new StreamReader(stream)));
+            stream.Dispose();
+            stream = File.Open(Path.Combine(caminho, CAMINHO_OPERADORES), FileMode.OpenOrCreate);
+            Operadores = serializer.Deserialize<Colecao<Operador>>(new JsonTextReader(new StreamReader(stream)));
+            stream.Dispose();
+            stream = File.Open(Path.Combine(caminho, CAMINHO_FILIAIS), FileMode.OpenOrCreate);
+            Filials = serializer.Deserialize<Colecao<Filial>>(new JsonTextReader(new StreamReader(stream)));
+            stream.Dispose();
+            stream = File.Open(Path.Combine(caminho, CAMINHO_PRODUTOS), FileMode.OpenOrCreate);
+            Produtos = serializer.Deserialize<Colecao<Produto>>(new JsonTextReader(new StreamReader(stream)));
+            stream.Dispose();
         }
 
         public void SalvarTudo(string caminho)
         {
-            var serializerInventario = new XmlSerializer(typeof(Colecao<Inventario>));
-            serializerInventario.Serialize(File.Open(Path.Combine(caminho, CAMINHO_INVENTARIO), FileMode.OpenOrCreate),
-                Inventarios);
-            var serializerOperadores = new XmlSerializer(typeof(Colecao<Operador>));
-            serializerOperadores.Serialize(File.Open(Path.Combine(caminho, CAMINHO_OPERADORES), FileMode.OpenOrCreate),
-                Inventarios);
-            var serializerFiliais = new XmlSerializer(typeof(Colecao<Filial>));
-            serializerFiliais.Serialize(File.Open(Path.Combine(caminho, CAMINHO_FILIAIS), FileMode.OpenOrCreate),
-                Inventarios);
+            var serializer = new JsonSerializer();
+
+            var stream = File.Open(Path.Combine(caminho, CAMINHO_INVENTARIO), FileMode.OpenOrCreate);
+            serializer.Serialize(new JsonTextWriter(new StreamWriter(stream)), Inventarios);
+            stream.Dispose();
+            stream = File.Open(Path.Combine(caminho, CAMINHO_OPERADORES), FileMode.OpenOrCreate);
+            serializer.Serialize(new JsonTextWriter(new StreamWriter(stream)), Operadores);
+            stream.Dispose();
+            stream = File.Open(Path.Combine(caminho, CAMINHO_FILIAIS), FileMode.OpenOrCreate);
+            serializer.Serialize(new JsonTextWriter(new StreamWriter(stream)), Filials);
+            stream.Dispose();
+            stream = File.Open(Path.Combine(caminho, CAMINHO_PRODUTOS), FileMode.OpenOrCreate);
+            serializer.Serialize(new JsonTextWriter(new StreamWriter(stream)), Produtos);
+            stream.Dispose();
         }
 
 
@@ -58,6 +75,11 @@ namespace Sirius.Coletor.Dados
             if (File.Exists(inventariosPath))
             {
                 File.Delete(inventariosPath);
+            }
+            var produtosPath = Path.Combine(filepath, CAMINHO_PRODUTOS);
+            if (File.Exists(produtosPath))
+            {
+                File.Delete(produtosPath);
             }
         }
     }
