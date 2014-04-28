@@ -1,6 +1,6 @@
 ﻿namespace Sirius.Coletor.Views
 {
-    partial class FrmEntrada
+    partial class ViewEntrada
     {
         /// <summary>
         /// Required designer variable.
@@ -30,26 +30,30 @@
         private void InitializeComponent()
         {
             this.mainMenu1 = new System.Windows.Forms.MainMenu();
-            this.btnInventario = new System.Windows.Forms.Button();
-            this.btnContagem = new System.Windows.Forms.Button();
+            this.btnVoltar = new System.Windows.Forms.MenuItem();
+            this.btnExecutarInventario = new System.Windows.Forms.Button();
             this.lblOperador = new System.Windows.Forms.Label();
+            this.btnEnviarInventario = new System.Windows.Forms.Button();
+            this.btnParametros = new System.Windows.Forms.Button();
             this.SuspendLayout();
             // 
-            // btnInventario
+            // mainMenu1
             // 
-            this.btnInventario.Location = new System.Drawing.Point(27, 44);
-            this.btnInventario.Name = "btnInventario";
-            this.btnInventario.Size = new System.Drawing.Size(187, 47);
-            this.btnInventario.TabIndex = 0;
-            this.btnInventario.Text = "Inventario";
+            this.mainMenu1.MenuItems.Add(this.btnVoltar);
             // 
-            // btnContagem
+            // btnVoltar
             // 
-            this.btnContagem.Location = new System.Drawing.Point(27, 139);
-            this.btnContagem.Name = "btnContagem";
-            this.btnContagem.Size = new System.Drawing.Size(187, 47);
-            this.btnContagem.TabIndex = 1;
-            this.btnContagem.Text = "Contagem";
+            this.btnVoltar.Text = "Voltar";
+            this.btnVoltar.Click += new System.EventHandler(this.btnVoltar_Click);
+            // 
+            // btnExecutarInventario
+            // 
+            this.btnExecutarInventario.Location = new System.Drawing.Point(27, 32);
+            this.btnExecutarInventario.Name = "btnExecutarInventario";
+            this.btnExecutarInventario.Size = new System.Drawing.Size(187, 47);
+            this.btnExecutarInventario.TabIndex = 0;
+            this.btnExecutarInventario.Text = "Executar Inventario";
+            this.btnExecutarInventario.Click += new System.EventHandler(this.btnInventario_Click);
             // 
             // lblOperador
             // 
@@ -57,15 +61,33 @@
             this.lblOperador.Name = "lblOperador";
             this.lblOperador.Size = new System.Drawing.Size(210, 25);
             // 
+            // btnEnviarInventario
+            // 
+            this.btnEnviarInventario.Location = new System.Drawing.Point(27, 85);
+            this.btnEnviarInventario.Name = "btnEnviarInventario";
+            this.btnEnviarInventario.Size = new System.Drawing.Size(187, 47);
+            this.btnEnviarInventario.TabIndex = 1;
+            this.btnEnviarInventario.Text = "Enviar Inventario";
+            // 
+            // btnParametros
+            // 
+            this.btnParametros.Location = new System.Drawing.Point(27, 138);
+            this.btnParametros.Name = "btnParametros";
+            this.btnParametros.Size = new System.Drawing.Size(187, 47);
+            this.btnParametros.TabIndex = 2;
+            this.btnParametros.Text = "Parametros";
+            // 
             // FrmEntrada
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(96F, 96F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Dpi;
             this.AutoScroll = true;
             this.ClientSize = new System.Drawing.Size(240, 268);
+            this.Controls.Add(this.btnParametros);
+            this.Controls.Add(this.btnEnviarInventario);
             this.Controls.Add(this.lblOperador);
-            this.Controls.Add(this.btnContagem);
-            this.Controls.Add(this.btnInventario);
+            this.Controls.Add(this.btnExecutarInventario);
+            this.KeyPreview = true;
             this.Menu = this.mainMenu1;
             this.Name = "FrmEntrada";
             this.Text = "FrmEntrada";
@@ -75,8 +97,10 @@
 
         #endregion
 
-        private System.Windows.Forms.Button btnInventario;
-        private System.Windows.Forms.Button btnContagem;
+        private System.Windows.Forms.Button btnExecutarInventario;
         private System.Windows.Forms.Label lblOperador;
+        private System.Windows.Forms.Button btnEnviarInventario;
+        private System.Windows.Forms.MenuItem btnVoltar;
+        private System.Windows.Forms.Button btnParametros;
     }
 }

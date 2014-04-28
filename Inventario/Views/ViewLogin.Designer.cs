@@ -33,7 +33,8 @@
             this.lblSenha = new System.Windows.Forms.Label();
             this.textBox1 = new System.Windows.Forms.TextBox();
             this.btnEntrar = new System.Windows.Forms.Button();
-            this.btnSair = new System.Windows.Forms.Button();
+            this.mainMenu1 = new System.Windows.Forms.MainMenu();
+            this.btnSair = new System.Windows.Forms.MenuItem();
             this.SuspendLayout();
             // 
             // lblUsuario
@@ -71,13 +72,14 @@
             this.btnEntrar.Size = new System.Drawing.Size(117, 37);
             this.btnEntrar.TabIndex = 5;
             this.btnEntrar.Text = "Entrar";
+            this.btnEntrar.Click += new System.EventHandler(this.btnEntrar_Click);
+            // 
+            // mainMenu1
+            // 
+            this.mainMenu1.MenuItems.Add(this.btnSair);
             // 
             // btnSair
             // 
-            this.btnSair.Location = new System.Drawing.Point(3, 268);
-            this.btnSair.Name = "btnSair";
-            this.btnSair.Size = new System.Drawing.Size(117, 23);
-            this.btnSair.TabIndex = 8;
             this.btnSair.Text = "Sair";
             this.btnSair.Click += new System.EventHandler(this.btnSair_Click);
             // 
@@ -86,13 +88,13 @@
             this.AutoScaleDimensions = new System.Drawing.SizeF(96F, 96F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Dpi;
             this.AutoScroll = true;
-            this.ClientSize = new System.Drawing.Size(240, 294);
-            this.Controls.Add(this.btnSair);
+            this.ClientSize = new System.Drawing.Size(257, 285);
             this.Controls.Add(this.btnEntrar);
             this.Controls.Add(this.textBox1);
             this.Controls.Add(this.lblSenha);
             this.Controls.Add(this.tbUsuario);
             this.Controls.Add(this.lblUsuario);
+            this.Menu = this.mainMenu1;
             this.Name = "FrmLogin";
             this.Text = "Form1";
             this.ResumeLayout(false);
@@ -106,7 +108,8 @@
         private System.Windows.Forms.Label lblSenha;
         private System.Windows.Forms.TextBox textBox1;
         private System.Windows.Forms.Button btnEntrar;
-        private System.Windows.Forms.Button btnSair;
+        private System.Windows.Forms.MainMenu mainMenu1;
+        private System.Windows.Forms.MenuItem btnSair;
     }
 }
 

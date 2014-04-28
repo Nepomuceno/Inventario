@@ -11,27 +11,29 @@ namespace Sirius.Coletor.Views
         public FrmLogin()
         {
             InitializeComponent();
-            try
-            {
-                _reader = new BarcodeReader();
-                _reader.Start();
-                _reader.ListChanged += (sender, args) =>
-                {
-                    if (args.ListChangedType == ListChangedType.ItemAdded)
-                    {
-                        tbUsuario.Text = _reader.ReaderData.Text;
-                    }
-                };
-            }
-            catch (Exception)
-            {
-            }
+                //_reader = new BarcodeReader();
+                //_reader.Start();
+                //_reader.ListChanged += (sender, args) =>
+                //{
+                //    if (args.ListChangedType == ListChangedType.ItemAdded)
+                //    {
+                //        tbUsuario.Text = _reader.ReaderData.Text;
+                //    }
+                //};
         }
 
-        private void btnSair_Click(object sender, System.EventArgs e)
+        private void btnSair_Click(object sender, EventArgs e)
         {
             Program.Banco.SalvarTudo(Program.Caminho);
             Application.Exit();
         }
+
+        private void btnEntrar_Click(object sender, EventArgs e)
+        {
+            var entrada = new ViewEntrada(this);
+            entrada.Show();
+        }
+
+        
     }
 }

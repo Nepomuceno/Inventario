@@ -16,6 +16,7 @@ namespace Sirius.Coletor.Base
         public Filial Filial { get; set; }
         public DateTime DataInicio { get; set; }
         public int CodigoContagem { get; set; }
+        public StatusInventario StatusInventario { get; set; }
         public IList<Leitura> Leituras { get; set; }
     }
 }
