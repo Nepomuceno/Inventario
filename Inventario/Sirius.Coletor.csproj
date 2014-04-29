@@ -84,6 +84,26 @@
       <LastGenOutput>Resources.Designer.cs</LastGenOutput>
       <SubType>Designer</SubType>
     </EmbeddedResource>
+    <EmbeddedResource Include="Views\ViewLeituras.resx">
+      <DependentUpon>ViewLeituras.cs</DependentUpon>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Views\ViewLocal.resx">
+      <DependentUpon>ViewLocal.cs</DependentUpon>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Views\ViewDeposito.resx">
+      <DependentUpon>ViewDeposito.cs</DependentUpon>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Views\ViewInventario.resx">
+      <DependentUpon>ViewInventario.cs</DependentUpon>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Views\ViewParametros.resx">
+      <DependentUpon>ViewParametros.cs</DependentUpon>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
     <EmbeddedResource Include="Views\ViewEntrada.resx">
       <DependentUpon>ViewEntrada.cs</DependentUpon>
       <SubType>Designer</SubType>
@@ -96,6 +116,36 @@
       <AutoGen>True</AutoGen>
       <DependentUpon>Resources.resx</DependentUpon>
       <DesignTime>True</DesignTime>
+    </Compile>
+    <Compile Include="Views\ViewLeituras.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Views\ViewLeituras.Designer.cs">
+      <DependentUpon>ViewLeituras.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Views\ViewLocal.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Views\ViewLocal.Designer.cs">
+      <DependentUpon>ViewLocal.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Views\ViewDeposito.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Views\ViewDeposito.Designer.cs">
+      <DependentUpon>ViewDeposito.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Views\ViewInventario.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Views\ViewInventario.Designer.cs">
+      <DependentUpon>ViewInventario.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Views\ViewParametros.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Views\ViewParametros.Designer.cs">
+      <DependentUpon>ViewParametros.cs</DependentUpon>
     </Compile>
     <Compile Include="Views\ViewEntrada.cs">
       <SubType>Form</SubType>

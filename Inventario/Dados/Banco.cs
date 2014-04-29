@@ -8,23 +8,26 @@ namespace Sirius.Coletor.Dados
 {
     public class Banco
     {
+        
         private const string CAMINHO_INVENTARIO = "/Inventarios.json";
         private const string CAMINHO_OPERADORES = "/Operadores.json";
         private const string CAMINHO_FILIAIS = "/Filials.json";
         private const string CAMINHO_PRODUTOS = "/Produtos.json";
 
+        public ParametrosDeInicializacao ParametrosDeInicializacao { get; set; }
+
+
         public Colecao<Inventario> Inventarios { get; set; }
         
         public Colecao<Operador> Operadores { get; set; }
         
-        public Colecao<Filial> Filials { get; set; }
+        public Colecao<Filial> Filiais { get; set; }
 
         public Colecao<Produto> Produtos { get; set; }
 
         public void Carregar(string caminho)
         {
             var serializer = new JsonSerializer();
-
             var stream = File.Open(Path.Combine(caminho, CAMINHO_INVENTARIO), FileMode.OpenOrCreate);
             Inventarios = serializer.Deserialize <Colecao<Inventario>>(new JsonTextReader(new StreamReader(stream)));
             stream.Dispose();
@@ -32,17 +35,18 @@ namespace Sirius.Coletor.Dados
             Operadores = serializer.Deserialize<Colecao<Operador>>(new JsonTextReader(new StreamReader(stream)));
             stream.Dispose();
             stream = File.Open(Path.Combine(caminho, CAMINHO_FILIAIS), FileMode.OpenOrCreate);
-            Filials = serializer.Deserialize<Colecao<Filial>>(new JsonTextReader(new StreamReader(stream)));
+            Filiais = serializer.Deserialize<Colecao<Filial>>(new JsonTextReader(new StreamReader(stream)));
             stream.Dispose();
             stream = File.Open(Path.Combine(caminho, CAMINHO_PRODUTOS), FileMode.OpenOrCreate);
             Produtos = serializer.Deserialize<Colecao<Produto>>(new JsonTextReader(new StreamReader(stream)));
             stream.Dispose();
+            Inicialize();
         }
 
         public void SalvarTudo(string caminho)
         {
+            Inicialize();
             var serializer = new JsonSerializer();
-
             var stream = File.Open(Path.Combine(caminho, CAMINHO_INVENTARIO), FileMode.OpenOrCreate);
             serializer.Serialize(new JsonTextWriter(new StreamWriter(stream)), Inventarios);
             stream.Dispose();
@@ -50,7 +54,7 @@ namespace Sirius.Coletor.Dados
             serializer.Serialize(new JsonTextWriter(new StreamWriter(stream)), Operadores);
             stream.Dispose();
             stream = File.Open(Path.Combine(caminho, CAMINHO_FILIAIS), FileMode.OpenOrCreate);
-            serializer.Serialize(new JsonTextWriter(new StreamWriter(stream)), Filials);
+            serializer.Serialize(new JsonTextWriter(new StreamWriter(stream)), Filiais);
             stream.Dispose();
             stream = File.Open(Path.Combine(caminho, CAMINHO_PRODUTOS), FileMode.OpenOrCreate);
             serializer.Serialize(new JsonTextWriter(new StreamWriter(stream)), Produtos);
@@ -82,6 +86,32 @@ namespace Sirius.Coletor.Dados
                 File.Delete(produtosPath);
             }
         }
+
+        private void Inicialize()
+        {
+            if (Inventarios == null)
+            {
+                Inventarios = new Colecao<Inventario>();
+            }
+            if (Operadores == null)
+            {
+                Operadores = new Colecao<Operador>();
+            }
+            if (Filiais == null)
+            {
+                Filiais = new Colecao<Filial>();
+            }
+            if (Produtos == null)
+            {
+                Produtos = new Colecao<Produto>();
+            }
+        }
+    }
+
+    public class ParametrosDeInicializacao
+    {
+        public TipoLeitura TipoLeitura { get; set; }
+        public bool LeituraLocalAposCadaItem { get; set; }
     }
 
     public class Colecao<T> : List<T>

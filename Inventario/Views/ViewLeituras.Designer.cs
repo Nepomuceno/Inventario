@@ -1,6 +1,6 @@
 ﻿namespace Sirius.Coletor.Views
 {
-    partial class ViewEntrada
+    partial class ViewLeituras
     {
         /// <summary>
         /// Required designer variable.
@@ -31,10 +31,9 @@
         {
             this.mainMenu1 = new System.Windows.Forms.MainMenu();
             this.btnVoltar = new System.Windows.Forms.MenuItem();
-            this.btnExecutarInventario = new System.Windows.Forms.Button();
             this.lblOperador = new System.Windows.Forms.Label();
-            this.btnEnviarInventario = new System.Windows.Forms.Button();
-            this.btnParametros = new System.Windows.Forms.Button();
+            this.dgLeituras = new System.Windows.Forms.DataGrid();
+            this.btnNovoProduto = new System.Windows.Forms.Button();
             this.SuspendLayout();
             // 
             // mainMenu1
@@ -46,62 +45,50 @@
             this.btnVoltar.Text = "Voltar";
             this.btnVoltar.Click += new System.EventHandler(this.btnVoltar_Click);
             // 
-            // btnExecutarInventario
-            // 
-            this.btnExecutarInventario.Location = new System.Drawing.Point(27, 32);
-            this.btnExecutarInventario.Name = "btnExecutarInventario";
-            this.btnExecutarInventario.Size = new System.Drawing.Size(187, 47);
-            this.btnExecutarInventario.TabIndex = 0;
-            this.btnExecutarInventario.Text = "Executar Inventario";
-            this.btnExecutarInventario.Click += new System.EventHandler(this.btnInventario_Click);
-            // 
             // lblOperador
             // 
             this.lblOperador.Location = new System.Drawing.Point(4, 4);
             this.lblOperador.Name = "lblOperador";
             this.lblOperador.Size = new System.Drawing.Size(210, 25);
             // 
-            // btnEnviarInventario
+            // dgLeituras
             // 
-            this.btnEnviarInventario.Location = new System.Drawing.Point(27, 85);
-            this.btnEnviarInventario.Name = "btnEnviarInventario";
-            this.btnEnviarInventario.Size = new System.Drawing.Size(187, 47);
-            this.btnEnviarInventario.TabIndex = 1;
-            this.btnEnviarInventario.Text = "Enviar Inventario";
+            this.dgLeituras.BackgroundColor = System.Drawing.Color.FromArgb(((int)(((byte)(128)))), ((int)(((byte)(128)))), ((int)(((byte)(128)))));
+            this.dgLeituras.Location = new System.Drawing.Point(4, 32);
+            this.dgLeituras.Name = "dgLeituras";
+            this.dgLeituras.Size = new System.Drawing.Size(233, 200);
+            this.dgLeituras.TabIndex = 6;
             // 
-            // btnParametros
+            // btnNovoProduto
             // 
-            this.btnParametros.Location = new System.Drawing.Point(27, 138);
-            this.btnParametros.Name = "btnParametros";
-            this.btnParametros.Size = new System.Drawing.Size(187, 47);
-            this.btnParametros.TabIndex = 2;
-            this.btnParametros.Text = "Parametros";
-            this.btnParametros.Click += new System.EventHandler(this.btnParametros_Click);
+            this.btnNovoProduto.Location = new System.Drawing.Point(146, 238);
+            this.btnNovoProduto.Name = "btnNovoProduto";
+            this.btnNovoProduto.Size = new System.Drawing.Size(91, 27);
+            this.btnNovoProduto.TabIndex = 8;
+            this.btnNovoProduto.Text = "Novo produto";
             // 
-            // ViewEntrada
+            // ViewLeituras
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(96F, 96F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Dpi;
             this.AutoScroll = true;
             this.ClientSize = new System.Drawing.Size(240, 268);
-            this.Controls.Add(this.btnParametros);
-            this.Controls.Add(this.btnEnviarInventario);
+            this.Controls.Add(this.btnNovoProduto);
+            this.Controls.Add(this.dgLeituras);
             this.Controls.Add(this.lblOperador);
-            this.Controls.Add(this.btnExecutarInventario);
             this.KeyPreview = true;
             this.Menu = this.mainMenu1;
-            this.Name = "ViewEntrada";
-            this.Text = "Coletor";
+            this.Name = "ViewLeituras";
+            this.Text = "Leituras";
             this.ResumeLayout(false);
 
         }
 
         #endregion
 
-        private System.Windows.Forms.Button btnExecutarInventario;
         private System.Windows.Forms.Label lblOperador;
-        private System.Windows.Forms.Button btnEnviarInventario;
         private System.Windows.Forms.MenuItem btnVoltar;
-        private System.Windows.Forms.Button btnParametros;
+        private System.Windows.Forms.DataGrid dgLeituras;
+        private System.Windows.Forms.Button btnNovoProduto;
     }
 }

@@ -1,6 +1,6 @@
 ﻿namespace Sirius.Coletor.Views
 {
-    partial class ViewEntrada
+    partial class ViewInventario
     {
         /// <summary>
         /// Required designer variable.
@@ -31,10 +31,10 @@
         {
             this.mainMenu1 = new System.Windows.Forms.MainMenu();
             this.btnVoltar = new System.Windows.Forms.MenuItem();
-            this.btnExecutarInventario = new System.Windows.Forms.Button();
             this.lblOperador = new System.Windows.Forms.Label();
-            this.btnEnviarInventario = new System.Windows.Forms.Button();
-            this.btnParametros = new System.Windows.Forms.Button();
+            this.btnExecutar = new System.Windows.Forms.Button();
+            this.lblDeposito = new System.Windows.Forms.Label();
+            this.cbInventarios = new System.Windows.Forms.ComboBox();
             this.SuspendLayout();
             // 
             // mainMenu1
@@ -46,62 +46,59 @@
             this.btnVoltar.Text = "Voltar";
             this.btnVoltar.Click += new System.EventHandler(this.btnVoltar_Click);
             // 
-            // btnExecutarInventario
-            // 
-            this.btnExecutarInventario.Location = new System.Drawing.Point(27, 32);
-            this.btnExecutarInventario.Name = "btnExecutarInventario";
-            this.btnExecutarInventario.Size = new System.Drawing.Size(187, 47);
-            this.btnExecutarInventario.TabIndex = 0;
-            this.btnExecutarInventario.Text = "Executar Inventario";
-            this.btnExecutarInventario.Click += new System.EventHandler(this.btnInventario_Click);
-            // 
             // lblOperador
             // 
             this.lblOperador.Location = new System.Drawing.Point(4, 4);
             this.lblOperador.Name = "lblOperador";
             this.lblOperador.Size = new System.Drawing.Size(210, 25);
             // 
-            // btnEnviarInventario
+            // btnExecutar
             // 
-            this.btnEnviarInventario.Location = new System.Drawing.Point(27, 85);
-            this.btnEnviarInventario.Name = "btnEnviarInventario";
-            this.btnEnviarInventario.Size = new System.Drawing.Size(187, 47);
-            this.btnEnviarInventario.TabIndex = 1;
-            this.btnEnviarInventario.Text = "Enviar Inventario";
+            this.btnExecutar.Location = new System.Drawing.Point(165, 88);
+            this.btnExecutar.Name = "btnExecutar";
+            this.btnExecutar.Size = new System.Drawing.Size(72, 20);
+            this.btnExecutar.TabIndex = 3;
+            this.btnExecutar.Text = "Executar";
+            this.btnExecutar.Click += new System.EventHandler(this.btnExecutar_Click);
             // 
-            // btnParametros
+            // lblDeposito
             // 
-            this.btnParametros.Location = new System.Drawing.Point(27, 138);
-            this.btnParametros.Name = "btnParametros";
-            this.btnParametros.Size = new System.Drawing.Size(187, 47);
-            this.btnParametros.TabIndex = 2;
-            this.btnParametros.Text = "Parametros";
-            this.btnParametros.Click += new System.EventHandler(this.btnParametros_Click);
+            this.lblDeposito.Location = new System.Drawing.Point(4, 38);
+            this.lblDeposito.Name = "lblDeposito";
+            this.lblDeposito.Size = new System.Drawing.Size(128, 20);
+            this.lblDeposito.Text = "Escolha o inventario";
             // 
-            // ViewEntrada
+            // cbInventarios
+            // 
+            this.cbInventarios.Location = new System.Drawing.Point(4, 61);
+            this.cbInventarios.Name = "cbInventarios";
+            this.cbInventarios.Size = new System.Drawing.Size(233, 22);
+            this.cbInventarios.TabIndex = 6;
+            // 
+            // ViewInventario
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(96F, 96F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Dpi;
             this.AutoScroll = true;
             this.ClientSize = new System.Drawing.Size(240, 268);
-            this.Controls.Add(this.btnParametros);
-            this.Controls.Add(this.btnEnviarInventario);
+            this.Controls.Add(this.lblDeposito);
+            this.Controls.Add(this.cbInventarios);
+            this.Controls.Add(this.btnExecutar);
             this.Controls.Add(this.lblOperador);
-            this.Controls.Add(this.btnExecutarInventario);
             this.KeyPreview = true;
             this.Menu = this.mainMenu1;
-            this.Name = "ViewEntrada";
-            this.Text = "Coletor";
+            this.Name = "ViewInventario";
+            this.Text = "Inventarios";
             this.ResumeLayout(false);
 
         }
 
         #endregion
 
-        private System.Windows.Forms.Button btnExecutarInventario;
         private System.Windows.Forms.Label lblOperador;
-        private System.Windows.Forms.Button btnEnviarInventario;
         private System.Windows.Forms.MenuItem btnVoltar;
-        private System.Windows.Forms.Button btnParametros;
+        private System.Windows.Forms.Button btnExecutar;
+        private System.Windows.Forms.Label lblDeposito;
+        private System.Windows.Forms.ComboBox cbInventarios;
     }
 }
