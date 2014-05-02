@@ -31,7 +31,7 @@
             this.lblUsuario = new System.Windows.Forms.Label();
             this.tbUsuario = new System.Windows.Forms.TextBox();
             this.lblSenha = new System.Windows.Forms.Label();
-            this.textBox1 = new System.Windows.Forms.TextBox();
+            this.tbSenha = new System.Windows.Forms.TextBox();
             this.btnEntrar = new System.Windows.Forms.Button();
             this.mainMenu1 = new System.Windows.Forms.MainMenu();
             this.btnSair = new System.Windows.Forms.MenuItem();
@@ -58,12 +58,13 @@
             this.lblSenha.Size = new System.Drawing.Size(100, 20);
             this.lblSenha.Text = "Senha";
             // 
-            // textBox1
+            // tbSenha
             // 
-            this.textBox1.Location = new System.Drawing.Point(3, 91);
-            this.textBox1.Name = "textBox1";
-            this.textBox1.Size = new System.Drawing.Size(234, 21);
-            this.textBox1.TabIndex = 4;
+            this.tbSenha.Location = new System.Drawing.Point(3, 91);
+            this.tbSenha.Name = "tbSenha";
+            this.tbSenha.PasswordChar = '*';
+            this.tbSenha.Size = new System.Drawing.Size(234, 21);
+            this.tbSenha.TabIndex = 4;
             // 
             // btnEntrar
             // 
@@ -90,7 +91,7 @@
             this.AutoScroll = true;
             this.ClientSize = new System.Drawing.Size(257, 285);
             this.Controls.Add(this.btnEntrar);
-            this.Controls.Add(this.textBox1);
+            this.Controls.Add(this.tbSenha);
             this.Controls.Add(this.lblSenha);
             this.Controls.Add(this.tbUsuario);
             this.Controls.Add(this.lblUsuario);
@@ -106,7 +107,7 @@
         private System.Windows.Forms.Label lblUsuario;
         private System.Windows.Forms.TextBox tbUsuario;
         private System.Windows.Forms.Label lblSenha;
-        private System.Windows.Forms.TextBox textBox1;
+        private System.Windows.Forms.TextBox tbSenha;
         private System.Windows.Forms.Button btnEntrar;
         private System.Windows.Forms.MainMenu mainMenu1;
         private System.Windows.Forms.MenuItem btnSair;

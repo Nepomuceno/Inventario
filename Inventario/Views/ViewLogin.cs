@@ -32,6 +32,7 @@ namespace Sirius.Coletor.Views
 
         private void btnEntrar_Click(object sender, EventArgs e)
         {
+            
             var operador =
                 Program.Banco.Operadores.FirstOrDefault(
                     o => o.Nome.Equals(tbUsuario.Text, StringComparison.InvariantCultureIgnoreCase));

@@ -17,10 +17,7 @@ namespace Sirius.Coletor.Views
             InitializeComponent();
         }
 
-        private void btnInventario_Click(object sender, System.EventArgs e)
-        {
-
-        }
+  
 
         private void btnVoltar_Click(object sender, System.EventArgs e)
         {
@@ -87,40 +84,40 @@ namespace Sirius.Coletor.Views
                 new Produto()
                 {
                     Codigo = 1,
-                    Descricao = "Produto 1",
+                    Descricao = "Produto 1 LI",
                     EANS = new List<string>
                     {
-                        {"12345"}
+                        {"7896094999121"}
                     },
                     TipoLeitura = TipoLeitura.Indefinido
                 },
                 new Produto()
                 {
                     Codigo = 2,
-                    Descricao = "Produto 2",
+                    Descricao = "Produto 2 LM",
                     EANS = new List<string>
                     {
-                        {"23456"}
+                        {"7896094901285"}
                     },
-                    TipoLeitura = TipoLeitura.Indefinido
+                    TipoLeitura = TipoLeitura.Multipla
                 },
                 new Produto()
                 {
                     Codigo = 3,
-                    Descricao = "Produto 3",
+                    Descricao = "Produto 3 LU",
                     EANS = new List<string>
                     {
-                        {"78910"}
+                        {"7896094905450"}
                     },
-                    TipoLeitura = TipoLeitura.Indefinido
+                    TipoLeitura = TipoLeitura.Unica
                 },
                 new Produto()
                 {
                     Codigo = 1,
-                    Descricao = "Item 1",
+                    Descricao = "Produto 4",
                     EANS = new List<string>
                     {
-                        {"11121"}
+                        {"78960949"}
                     },
                     TipoLeitura = TipoLeitura.Indefinido
                 }

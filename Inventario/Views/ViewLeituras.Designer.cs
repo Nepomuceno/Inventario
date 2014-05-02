@@ -29,11 +29,14 @@
         /// </summary>
         private void InitializeComponent()
         {
+            this.components = new System.ComponentModel.Container();
             this.mainMenu1 = new System.Windows.Forms.MainMenu();
             this.btnVoltar = new System.Windows.Forms.MenuItem();
             this.lblOperador = new System.Windows.Forms.Label();
+            this.leituraBindingSource = new System.Windows.Forms.BindingSource(this.components);
             this.dgLeituras = new System.Windows.Forms.DataGrid();
             this.btnNovoProduto = new System.Windows.Forms.Button();
+            ((System.ComponentModel.ISupportInitialize)(this.leituraBindingSource)).BeginInit();
             this.SuspendLayout();
             // 
             // mainMenu1
@@ -51,9 +54,14 @@
             this.lblOperador.Name = "lblOperador";
             this.lblOperador.Size = new System.Drawing.Size(210, 25);
             // 
+            // leituraBindingSource
+            // 
+            this.leituraBindingSource.DataSource = typeof(Sirius.Coletor.Base.Leitura);
+            // 
             // dgLeituras
             // 
             this.dgLeituras.BackgroundColor = System.Drawing.Color.FromArgb(((int)(((byte)(128)))), ((int)(((byte)(128)))), ((int)(((byte)(128)))));
+            this.dgLeituras.DataSource = this.leituraBindingSource;
             this.dgLeituras.Location = new System.Drawing.Point(4, 32);
             this.dgLeituras.Name = "dgLeituras";
             this.dgLeituras.Size = new System.Drawing.Size(233, 200);
@@ -80,6 +88,8 @@
             this.Menu = this.mainMenu1;
             this.Name = "ViewLeituras";
             this.Text = "Leituras";
+            this.GotFocus += new System.EventHandler(this.ViewLeituras_GotFocus);
+            ((System.ComponentModel.ISupportInitialize)(this.leituraBindingSource)).EndInit();
             this.ResumeLayout(false);
 
         }
@@ -90,5 +100,6 @@
         private System.Windows.Forms.MenuItem btnVoltar;
         private System.Windows.Forms.DataGrid dgLeituras;
         private System.Windows.Forms.Button btnNovoProduto;
+        private System.Windows.Forms.BindingSource leituraBindingSource;
     }
 }

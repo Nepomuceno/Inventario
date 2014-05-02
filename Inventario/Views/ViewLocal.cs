@@ -20,7 +20,7 @@ namespace Sirius.Coletor.Views
             _deposito = deposito;
             InitializeComponent();
             cbLocalizacoes.DisplayMember = "Nome";
-            cbLocalizacoes.DataSource = Program.Banco.Inventarios;
+            cbLocalizacoes.DataSource = deposito.Localizacoes;
         }
 
         
@@ -32,7 +32,8 @@ namespace Sirius.Coletor.Views
 
         private void btnExecutar_Click(object sender, EventArgs e)
         {
-            
+            var leituras = new ViewLeituras(this, _inventarioCorrente, _deposito, cbLocalizacoes.SelectedItem as Localizacao);
+            leituras.Show();
         }
 
     }

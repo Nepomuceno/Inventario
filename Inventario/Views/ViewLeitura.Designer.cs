@@ -31,20 +31,28 @@
         {
             this.mainMenu1 = new System.Windows.Forms.MainMenu();
             this.btnVoltar = new System.Windows.Forms.MenuItem();
+            this.btnSalvar = new System.Windows.Forms.MenuItem();
             this.lblOperador = new System.Windows.Forms.Label();
-            this.btnExecutar = new System.Windows.Forms.Button();
             this.lblProduto = new System.Windows.Forms.Label();
-            this.cbInventarios = new System.Windows.Forms.ComboBox();
+            this.tbProduto = new System.Windows.Forms.TextBox();
+            this.tbQuantidade = new System.Windows.Forms.TextBox();
+            this.lblQuantidade = new System.Windows.Forms.Label();
             this.SuspendLayout();
             // 
             // mainMenu1
             // 
             this.mainMenu1.MenuItems.Add(this.btnVoltar);
+            this.mainMenu1.MenuItems.Add(this.btnSalvar);
             // 
             // btnVoltar
             // 
             this.btnVoltar.Text = "Voltar";
             this.btnVoltar.Click += new System.EventHandler(this.btnVoltar_Click);
+            // 
+            // btnSalvar
+            // 
+            this.btnSalvar.Text = "Salvar";
+            this.btnSalvar.Click += new System.EventHandler(this.btnSalvar_Click);
             // 
             // lblOperador
             // 
@@ -52,28 +60,34 @@
             this.lblOperador.Name = "lblOperador";
             this.lblOperador.Size = new System.Drawing.Size(210, 25);
             // 
-            // btnExecutar
-            // 
-            this.btnExecutar.Location = new System.Drawing.Point(165, 88);
-            this.btnExecutar.Name = "btnExecutar";
-            this.btnExecutar.Size = new System.Drawing.Size(72, 20);
-            this.btnExecutar.TabIndex = 3;
-            this.btnExecutar.Text = "Executar";
-            // 
             // lblProduto
             // 
             this.lblProduto.Location = new System.Drawing.Point(4, 38);
             this.lblProduto.Name = "lblProduto";
             this.lblProduto.Size = new System.Drawing.Size(128, 20);
-            this.lblProduto.Text = "Escolha o inventario";
-            this.lblProduto.ParentChanged += new System.EventHandler(this.lblDeposito_ParentChanged);
+            this.lblProduto.Text = "Produto";
             // 
-            // cbInventarios
+            // tbProduto
             // 
-            this.cbInventarios.Location = new System.Drawing.Point(4, 61);
-            this.cbInventarios.Name = "cbInventarios";
-            this.cbInventarios.Size = new System.Drawing.Size(233, 22);
-            this.cbInventarios.TabIndex = 6;
+            this.tbProduto.Location = new System.Drawing.Point(4, 62);
+            this.tbProduto.Name = "tbProduto";
+            this.tbProduto.Size = new System.Drawing.Size(210, 21);
+            this.tbProduto.TabIndex = 8;
+            // 
+            // tbQuantidade
+            // 
+            this.tbQuantidade.Location = new System.Drawing.Point(4, 115);
+            this.tbQuantidade.Name = "tbQuantidade";
+            this.tbQuantidade.Size = new System.Drawing.Size(210, 21);
+            this.tbQuantidade.TabIndex = 10;
+            this.tbQuantidade.TextChanged += new System.EventHandler(this.tbQuantidade_TextChanged);
+            // 
+            // lblQuantidade
+            // 
+            this.lblQuantidade.Location = new System.Drawing.Point(4, 91);
+            this.lblQuantidade.Name = "lblQuantidade";
+            this.lblQuantidade.Size = new System.Drawing.Size(128, 20);
+            this.lblQuantidade.Text = "Quantidade";
             // 
             // ViewLeitura
             // 
@@ -81,14 +95,15 @@
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Dpi;
             this.AutoScroll = true;
             this.ClientSize = new System.Drawing.Size(240, 268);
+            this.Controls.Add(this.tbQuantidade);
+            this.Controls.Add(this.lblQuantidade);
+            this.Controls.Add(this.tbProduto);
             this.Controls.Add(this.lblProduto);
-            this.Controls.Add(this.cbInventarios);
-            this.Controls.Add(this.btnExecutar);
             this.Controls.Add(this.lblOperador);
             this.KeyPreview = true;
             this.Menu = this.mainMenu1;
             this.Name = "ViewLeitura";
-            this.Text = "Parametros";
+            this.Text = "Leitura";
             this.ResumeLayout(false);
 
         }
@@ -97,8 +112,10 @@
 
         private System.Windows.Forms.Label lblOperador;
         private System.Windows.Forms.MenuItem btnVoltar;
-        private System.Windows.Forms.Button btnExecutar;
         private System.Windows.Forms.Label lblProduto;
-        private System.Windows.Forms.ComboBox cbInventarios;
+        private System.Windows.Forms.MenuItem btnSalvar;
+        private System.Windows.Forms.TextBox tbProduto;
+        private System.Windows.Forms.TextBox tbQuantidade;
+        private System.Windows.Forms.Label lblQuantidade;
     }
 }
