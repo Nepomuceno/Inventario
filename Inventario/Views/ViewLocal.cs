@@ -30,10 +30,10 @@ namespace Sirius.Coletor.Views
             Close();
         }
 
-        private void btnExecutar_Click(object sender, EventArgs e)
+        private void btnConfirmar_Click(object sender, EventArgs e)
         {
-            var leituras = new ViewLeituras(this, _inventarioCorrente, _deposito, cbLocalizacoes.SelectedItem as Localizacao);
-            leituras.Show();
+            //var leituras = new ViewLeituras(this, _inventarioCorrente, _deposito, cbLocalizacoes.SelectedItem as Localizacao);
+            //leituras.Show();
         }
 
     }

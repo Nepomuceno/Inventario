@@ -34,16 +34,20 @@ namespace Sirius.Coletor.Views
 
         private void btnExecutar_Click(object sender, EventArgs e)
         {
+        }
+
+        private void btnConfirmar_Click(object sender, EventArgs e)
+        {
             if (Program.Banco.ParametrosDeInicializacao.LeituraLocalAposCadaItem)
             {
-                var leituras = new ViewLeituras(this, _inventarioCorrente,cbDepositos.SelectedItem as Deposito);
-                leituras.Show();
+                //var leituras = new ViewLeituras(this, _inventarioCorrente, cbDepositos.SelectedItem as Deposito);
+                //leituras.Show();
             }
             else
             {
                 var local = new ViewLocal(this, _inventarioCorrente, cbDepositos.SelectedItem as Deposito);
                 local.Show();
-            }        
+            }
         }
     }
 }

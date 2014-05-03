@@ -7,7 +7,6 @@ using Sirius.Coletor.Base;
 using Sirius.Coletor.Base.Extensions;
 using Sirius.Coletor.Dados;
 using System;
-using Sirius.Coletor.VewModel;
 
 namespace Sirius.Coletor.Views
 {

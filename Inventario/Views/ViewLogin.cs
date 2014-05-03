@@ -1,6 +1,7 @@
 ﻿using System;
 using System.ComponentModel;
 using System.Linq;
+using System.Reflection;
 using System.Windows.Forms;
 using Sirius.Coletor.Dados;
 using Symbol.Barcode;
@@ -13,15 +14,16 @@ namespace Sirius.Coletor.Views
         public FrmLogin()
         {
             InitializeComponent();
-                //_reader = new BarcodeReader();
-                //_reader.Start();
-                //_reader.ListChanged += (sender, args) =>
-                //{
-                //    if (args.ListChangedType == ListChangedType.ItemAdded)
-                //    {
-                //        tbUsuario.Text = _reader.ReaderData.Text;
-                //    }
-                //};
+            lblVersao.Text += Assembly.GetExecutingAssembly().GetName().Version.ToString();
+            //_reader = new BarcodeReader();
+            //_reader.Start();
+            //_reader.ListChanged += (sender, args) =>
+            //{
+            //    if (args.ListChangedType == ListChangedType.ItemAdded)
+            //    {
+            //        tbUsuario.Text = _reader.ReaderData.Text;
+            //    }
+            //};
         }
 
         private void btnSair_Click(object sender, EventArgs e)

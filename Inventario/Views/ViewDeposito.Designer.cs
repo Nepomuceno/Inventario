@@ -34,12 +34,13 @@
             this.lblOperador = new System.Windows.Forms.Label();
             this.cbDepositos = new System.Windows.Forms.ComboBox();
             this.lblDeposito = new System.Windows.Forms.Label();
-            this.btnExecutar = new System.Windows.Forms.Button();
+            this.btnConfirmar = new System.Windows.Forms.MenuItem();
             this.SuspendLayout();
             // 
             // mainMenu1
             // 
             this.mainMenu1.MenuItems.Add(this.btnVoltar);
+            this.mainMenu1.MenuItems.Add(this.btnConfirmar);
             // 
             // btnVoltar
             // 
@@ -66,14 +67,10 @@
             this.lblDeposito.Size = new System.Drawing.Size(128, 20);
             this.lblDeposito.Text = "Escolha o deposito";
             // 
-            // btnExecutar
+            // btnConfirmar
             // 
-            this.btnExecutar.Location = new System.Drawing.Point(165, 88);
-            this.btnExecutar.Name = "btnExecutar";
-            this.btnExecutar.Size = new System.Drawing.Size(72, 20);
-            this.btnExecutar.TabIndex = 3;
-            this.btnExecutar.Text = "Executar";
-            this.btnExecutar.Click += new System.EventHandler(this.btnExecutar_Click);
+            this.btnConfirmar.Text = "Confirmar";
+            this.btnConfirmar.Click += new System.EventHandler(this.btnConfirmar_Click);
             // 
             // ViewDeposito
             // 
@@ -81,7 +78,6 @@
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Dpi;
             this.AutoScroll = true;
             this.ClientSize = new System.Drawing.Size(240, 268);
-            this.Controls.Add(this.btnExecutar);
             this.Controls.Add(this.lblDeposito);
             this.Controls.Add(this.cbDepositos);
             this.Controls.Add(this.lblOperador);
@@ -99,6 +95,6 @@
         private System.Windows.Forms.MenuItem btnVoltar;
         private System.Windows.Forms.ComboBox cbDepositos;
         private System.Windows.Forms.Label lblDeposito;
-        private System.Windows.Forms.Button btnExecutar;
+        private System.Windows.Forms.MenuItem btnConfirmar;
     }
 }

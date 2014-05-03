@@ -67,13 +67,11 @@ namespace Sirius.Coletor.Views
                 {
                     Codigo = 1,
                     CodigoContagem = 1,
-                    DataInicio = DateTime.Now,
                     Filial = fl,
                     Nome = "Contagem de teste",
-                    Leituras = new List<Leitura>(),
-                    StatusInventario = StatusInventario.Aberto,
-                    TipoInventario = TipoInventario.Contagem
-
+                    LocalizacoesInventario = new List<LocalizacaoInventario>(),
+                    StatusInventario = StatusExecucao.Aberto,
+                    TipoInventario = TipoInventario.Rotativo
                 });
                 inv = Program.Banco.Inventarios.FirstOrDefault();
             }

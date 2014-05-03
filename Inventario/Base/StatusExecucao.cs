@@ -1,6 +1,6 @@
 ﻿namespace Sirius.Coletor.Base
 {
-    public enum StatusInventario
+    public enum StatusExecucao
     {
         Aberto = 0,
         EmExecucao = 1,

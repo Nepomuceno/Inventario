@@ -2,6 +2,7 @@
 {
     public enum TipoInventario
     {
-        Contagem
+        Rotativo,
+        Recontagem
     }
 }
