@@ -31,10 +31,14 @@
         {
             this.mainMenu1 = new System.Windows.Forms.MainMenu();
             this.btnVoltar = new System.Windows.Forms.MenuItem();
-            this.lblOperador = new System.Windows.Forms.Label();
+            this.btnConfirmar = new System.Windows.Forms.MenuItem();
             this.cbLocalizacoes = new System.Windows.Forms.ComboBox();
             this.lblLocal = new System.Windows.Forms.Label();
-            this.btnConfirmar = new System.Windows.Forms.MenuItem();
+            this.lblDeposito = new System.Windows.Forms.Label();
+            this.lblInventario = new System.Windows.Forms.Label();
+            this.lblContagem = new System.Windows.Forms.Label();
+            this.lblFilial = new System.Windows.Forms.Label();
+            this.lblOperador = new System.Windows.Forms.Label();
             this.SuspendLayout();
             // 
             // mainMenu1
@@ -47,30 +51,59 @@
             this.btnVoltar.Text = "Voltar";
             this.btnVoltar.Click += new System.EventHandler(this.btnVoltar_Click);
             // 
-            // lblOperador
-            // 
-            this.lblOperador.Location = new System.Drawing.Point(4, 4);
-            this.lblOperador.Name = "lblOperador";
-            this.lblOperador.Size = new System.Drawing.Size(210, 25);
-            // 
-            // cbLocalizacoes
-            // 
-            this.cbLocalizacoes.Location = new System.Drawing.Point(4, 60);
-            this.cbLocalizacoes.Name = "cbLocalizacoes";
-            this.cbLocalizacoes.Size = new System.Drawing.Size(233, 22);
-            this.cbLocalizacoes.TabIndex = 1;
-            // 
-            // lblLocal
-            // 
-            this.lblLocal.Location = new System.Drawing.Point(4, 37);
-            this.lblLocal.Name = "lblLocal";
-            this.lblLocal.Size = new System.Drawing.Size(128, 20);
-            this.lblLocal.Text = "Escolha o local";
-            // 
             // btnConfirmar
             // 
             this.btnConfirmar.Text = "Confirmar";
             this.btnConfirmar.Click += new System.EventHandler(this.btnConfirmar_Click);
+            // 
+            // cbLocalizacoes
+            // 
+            this.cbLocalizacoes.Location = new System.Drawing.Point(10, 185);
+            this.cbLocalizacoes.Name = "cbLocalizacoes";
+            this.cbLocalizacoes.Size = new System.Drawing.Size(226, 22);
+            this.cbLocalizacoes.TabIndex = 1;
+            // 
+            // lblLocal
+            // 
+            this.lblLocal.Location = new System.Drawing.Point(9, 162);
+            this.lblLocal.Name = "lblLocal";
+            this.lblLocal.Size = new System.Drawing.Size(128, 20);
+            this.lblLocal.Text = "Escolha o local";
+            // 
+            // lblDeposito
+            // 
+            this.lblDeposito.Location = new System.Drawing.Point(9, 131);
+            this.lblDeposito.Name = "lblDeposito";
+            this.lblDeposito.Size = new System.Drawing.Size(202, 20);
+            this.lblDeposito.Text = "Deposito:";
+            // 
+            // lblInventario
+            // 
+            this.lblInventario.Location = new System.Drawing.Point(10, 44);
+            this.lblInventario.Name = "lblInventario";
+            this.lblInventario.Size = new System.Drawing.Size(127, 28);
+            this.lblInventario.Text = "Inventario:";
+            // 
+            // lblContagem
+            // 
+            this.lblContagem.Location = new System.Drawing.Point(137, 44);
+            this.lblContagem.Name = "lblContagem";
+            this.lblContagem.Size = new System.Drawing.Size(101, 28);
+            this.lblContagem.Text = "Contagem:";
+            // 
+            // lblFilial
+            // 
+            this.lblFilial.Location = new System.Drawing.Point(10, 111);
+            this.lblFilial.Name = "lblFilial";
+            this.lblFilial.Size = new System.Drawing.Size(201, 20);
+            this.lblFilial.Text = "Filial:";
+            // 
+            // lblOperador
+            // 
+            this.lblOperador.Location = new System.Drawing.Point(9, 14);
+            this.lblOperador.Name = "lblOperador";
+            this.lblOperador.Size = new System.Drawing.Size(227, 20);
+            this.lblOperador.Text = "Operador:";
             // 
             // ViewLocal
             // 
@@ -78,9 +111,13 @@
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Dpi;
             this.AutoScroll = true;
             this.ClientSize = new System.Drawing.Size(240, 268);
+            this.Controls.Add(this.lblDeposito);
+            this.Controls.Add(this.lblInventario);
+            this.Controls.Add(this.lblContagem);
+            this.Controls.Add(this.lblFilial);
+            this.Controls.Add(this.lblOperador);
             this.Controls.Add(this.lblLocal);
             this.Controls.Add(this.cbLocalizacoes);
-            this.Controls.Add(this.lblOperador);
             this.KeyPreview = true;
             this.Menu = this.mainMenu1;
             this.Name = "ViewLocal";
@@ -91,10 +128,14 @@
 
         #endregion
 
-        private System.Windows.Forms.Label lblOperador;
         private System.Windows.Forms.MenuItem btnVoltar;
         private System.Windows.Forms.ComboBox cbLocalizacoes;
         private System.Windows.Forms.Label lblLocal;
         private System.Windows.Forms.MenuItem btnConfirmar;
+        private System.Windows.Forms.Label lblDeposito;
+        private System.Windows.Forms.Label lblInventario;
+        private System.Windows.Forms.Label lblContagem;
+        private System.Windows.Forms.Label lblFilial;
+        private System.Windows.Forms.Label lblOperador;
     }
 }

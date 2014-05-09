@@ -19,11 +19,7 @@ namespace Sirius.Coletor.Views
             InitializeComponent();
             cbDepositos.DisplayMember = "Nome";
             cbDepositos.DataSource = _inventarioCorrente.Filial.Depositos;
-        }
-
-        private void btnInventario_Click(object sender, System.EventArgs e)
-        {
-
+            InicializaLabels();
         }
 
         private void btnVoltar_Click(object sender, System.EventArgs e)
@@ -31,10 +27,15 @@ namespace Sirius.Coletor.Views
             _formAntigo.Show();
             Close();
         }
-
-        private void btnExecutar_Click(object sender, EventArgs e)
+        private void InicializaLabels()
         {
+            lblOperador.Text += string.Format("{0} - {1}", Program.Operador.Codigo,Program.Operador.Nome);
+            lblInventario.Text += _inventarioCorrente.Codigo.ToString();
+            lblContagem.Text += _inventarioCorrente.CodigoContagem.ToString();
+            lblFilial.Text += string.Format("{0} - {1}", _inventarioCorrente.Filial.Codigo,
+                _inventarioCorrente.Filial.Nome);
         }
+
 
         private void btnConfirmar_Click(object sender, EventArgs e)
         {

@@ -85,6 +85,10 @@
       <LastGenOutput>Resources.Designer.cs</LastGenOutput>
       <SubType>Designer</SubType>
     </EmbeddedResource>
+    <EmbeddedResource Include="Views\ViewFinalLocalizacao.resx">
+      <DependentUpon>ViewFinalLocalizacao.cs</DependentUpon>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
     <EmbeddedResource Include="Views\ViewLeitura.resx">
       <DependentUpon>ViewLeitura.cs</DependentUpon>
       <SubType>Designer</SubType>
@@ -119,6 +123,13 @@
       <DesignTime>True</DesignTime>
     </Compile>
     <Compile Include="Base\Extensions\ProdutosHelper.cs" />
+    <Compile Include="Util\Demonstracao.cs" />
+    <Compile Include="Views\ViewFinalLocalizacao.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Views\ViewFinalLocalizacao.Designer.cs">
+      <DependentUpon>ViewFinalLocalizacao.cs</DependentUpon>
+    </Compile>
     <Compile Include="Views\ViewLeitura.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -171,7 +182,6 @@
   </ItemGroup>
   <ItemGroup>
     <Folder Include="Models\" />
-    <Folder Include="Util\" />
   </ItemGroup>
   <Import Project="$(MSBuildBinPath)\Microsoft.CompactFramework.CSharp.targets" />
   <ProjectExtensions>

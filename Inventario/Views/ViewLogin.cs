@@ -10,20 +10,10 @@ namespace Sirius.Coletor.Views
 {
     public partial class FrmLogin : Form
     {
-        private readonly BarcodeReader _reader;
         public FrmLogin()
         {
             InitializeComponent();
             lblVersao.Text += Assembly.GetExecutingAssembly().GetName().Version.ToString();
-            //_reader = new BarcodeReader();
-            //_reader.Start();
-            //_reader.ListChanged += (sender, args) =>
-            //{
-            //    if (args.ListChangedType == ListChangedType.ItemAdded)
-            //    {
-            //        tbUsuario.Text = _reader.ReaderData.Text;
-            //    }
-            //};
         }
 
         private void btnSair_Click(object sender, EventArgs e)

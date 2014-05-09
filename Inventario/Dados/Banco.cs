@@ -30,15 +30,19 @@ namespace Sirius.Coletor.Dados
             var serializer = new JsonSerializer();
             var stream = File.Open(Path.Combine(caminho, CAMINHO_INVENTARIO), FileMode.OpenOrCreate);
             Inventarios = serializer.Deserialize <Colecao<Inventario>>(new JsonTextReader(new StreamReader(stream)));
+            stream.Flush();
             stream.Dispose();
             stream = File.Open(Path.Combine(caminho, CAMINHO_OPERADORES), FileMode.OpenOrCreate);
             Operadores = serializer.Deserialize<Colecao<Operador>>(new JsonTextReader(new StreamReader(stream)));
+            stream.Flush();
             stream.Dispose();
             stream = File.Open(Path.Combine(caminho, CAMINHO_FILIAIS), FileMode.OpenOrCreate);
             Filiais = serializer.Deserialize<Colecao<Filial>>(new JsonTextReader(new StreamReader(stream)));
+            stream.Flush();
             stream.Dispose();
             stream = File.Open(Path.Combine(caminho, CAMINHO_PRODUTOS), FileMode.OpenOrCreate);
             Produtos = serializer.Deserialize<Colecao<Produto>>(new JsonTextReader(new StreamReader(stream)));
+            stream.Flush();
             stream.Dispose();
             Inicialize();
         }

@@ -21,6 +21,7 @@ namespace Sirius.Coletor.Views
             InitializeComponent();
             cbLocalizacoes.DisplayMember = "Nome";
             cbLocalizacoes.DataSource = deposito.Localizacoes;
+            InicializaLabels();
         }
 
         
@@ -32,8 +33,19 @@ namespace Sirius.Coletor.Views
 
         private void btnConfirmar_Click(object sender, EventArgs e)
         {
-            //var leituras = new ViewLeituras(this, _inventarioCorrente, _deposito, cbLocalizacoes.SelectedItem as Localizacao);
-            //leituras.Show();
+            var leituras = new ViewLeitura(this, _inventarioCorrente, cbLocalizacoes.SelectedItem as Localizacao, _deposito);
+            leituras.Show();
+        }
+
+        private void InicializaLabels()
+        {
+            lblOperador.Text += string.Format("{0} - {1}", Program.Operador.Codigo,Program.Operador.Nome);
+            lblInventario.Text += _inventarioCorrente.Codigo.ToString();
+            lblContagem.Text += _inventarioCorrente.CodigoContagem.ToString();
+            lblFilial.Text += string.Format("{0} - {1}", _inventarioCorrente.Filial.Codigo,
+                _inventarioCorrente.Filial.Nome);
+            lblDeposito.Text += string.Format("{0} - {1}", _deposito.Codigo, _deposito.Nome);
+
         }
 
     }

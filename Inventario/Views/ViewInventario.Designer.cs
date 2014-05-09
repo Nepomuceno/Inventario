@@ -32,14 +32,15 @@
             this.mainMenu1 = new System.Windows.Forms.MainMenu();
             this.btnVoltar = new System.Windows.Forms.MenuItem();
             this.lblOperador = new System.Windows.Forms.Label();
-            this.btnExecutar = new System.Windows.Forms.Button();
             this.lblDeposito = new System.Windows.Forms.Label();
             this.cbInventarios = new System.Windows.Forms.ComboBox();
+            this.btnExecutar = new System.Windows.Forms.MenuItem();
             this.SuspendLayout();
             // 
             // mainMenu1
             // 
             this.mainMenu1.MenuItems.Add(this.btnVoltar);
+            this.mainMenu1.MenuItems.Add(this.btnExecutar);
             // 
             // btnVoltar
             // 
@@ -51,15 +52,7 @@
             this.lblOperador.Location = new System.Drawing.Point(4, 4);
             this.lblOperador.Name = "lblOperador";
             this.lblOperador.Size = new System.Drawing.Size(210, 25);
-            // 
-            // btnExecutar
-            // 
-            this.btnExecutar.Location = new System.Drawing.Point(165, 88);
-            this.btnExecutar.Name = "btnExecutar";
-            this.btnExecutar.Size = new System.Drawing.Size(72, 20);
-            this.btnExecutar.TabIndex = 3;
-            this.btnExecutar.Text = "Executar";
-            this.btnExecutar.Click += new System.EventHandler(this.btnExecutar_Click);
+            this.lblOperador.Text = "Operador";
             // 
             // lblDeposito
             // 
@@ -75,6 +68,11 @@
             this.cbInventarios.Size = new System.Drawing.Size(233, 22);
             this.cbInventarios.TabIndex = 6;
             // 
+            // btnExecutar
+            // 
+            this.btnExecutar.Text = "Executar";
+            this.btnExecutar.Click += new System.EventHandler(this.btnExecutar_Click);
+            // 
             // ViewInventario
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(96F, 96F);
@@ -83,7 +81,6 @@
             this.ClientSize = new System.Drawing.Size(240, 268);
             this.Controls.Add(this.lblDeposito);
             this.Controls.Add(this.cbInventarios);
-            this.Controls.Add(this.btnExecutar);
             this.Controls.Add(this.lblOperador);
             this.KeyPreview = true;
             this.Menu = this.mainMenu1;
@@ -97,8 +94,8 @@
 
         private System.Windows.Forms.Label lblOperador;
         private System.Windows.Forms.MenuItem btnVoltar;
-        private System.Windows.Forms.Button btnExecutar;
         private System.Windows.Forms.Label lblDeposito;
         private System.Windows.Forms.ComboBox cbInventarios;
+        private System.Windows.Forms.MenuItem btnExecutar;
     }
 }

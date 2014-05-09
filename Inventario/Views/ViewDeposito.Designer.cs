@@ -31,10 +31,14 @@
         {
             this.mainMenu1 = new System.Windows.Forms.MainMenu();
             this.btnVoltar = new System.Windows.Forms.MenuItem();
+            this.btnConfirmar = new System.Windows.Forms.MenuItem();
             this.lblOperador = new System.Windows.Forms.Label();
             this.cbDepositos = new System.Windows.Forms.ComboBox();
             this.lblDeposito = new System.Windows.Forms.Label();
-            this.btnConfirmar = new System.Windows.Forms.MenuItem();
+            this.lblInventario = new System.Windows.Forms.Label();
+            this.lblContagem = new System.Windows.Forms.Label();
+            this.lblFilial = new System.Windows.Forms.Label();
+            this.label1 = new System.Windows.Forms.Label();
             this.SuspendLayout();
             // 
             // mainMenu1
@@ -47,6 +51,11 @@
             this.btnVoltar.Text = "Voltar";
             this.btnVoltar.Click += new System.EventHandler(this.btnVoltar_Click);
             // 
+            // btnConfirmar
+            // 
+            this.btnConfirmar.Text = "Confirmar";
+            this.btnConfirmar.Click += new System.EventHandler(this.btnConfirmar_Click);
+            // 
             // lblOperador
             // 
             this.lblOperador.Location = new System.Drawing.Point(4, 4);
@@ -55,22 +64,45 @@
             // 
             // cbDepositos
             // 
-            this.cbDepositos.Location = new System.Drawing.Point(4, 60);
+            this.cbDepositos.Location = new System.Drawing.Point(4, 154);
             this.cbDepositos.Name = "cbDepositos";
             this.cbDepositos.Size = new System.Drawing.Size(233, 22);
             this.cbDepositos.TabIndex = 1;
             // 
             // lblDeposito
             // 
-            this.lblDeposito.Location = new System.Drawing.Point(4, 37);
+            this.lblDeposito.Location = new System.Drawing.Point(3, 131);
             this.lblDeposito.Name = "lblDeposito";
             this.lblDeposito.Size = new System.Drawing.Size(128, 20);
             this.lblDeposito.Text = "Escolha o deposito";
             // 
-            // btnConfirmar
+            // lblInventario
             // 
-            this.btnConfirmar.Text = "Confirmar";
-            this.btnConfirmar.Click += new System.EventHandler(this.btnConfirmar_Click);
+            this.lblInventario.Location = new System.Drawing.Point(4, 47);
+            this.lblInventario.Name = "lblInventario";
+            this.lblInventario.Size = new System.Drawing.Size(128, 28);
+            this.lblInventario.Text = "Inventario:";
+            // 
+            // lblContagem
+            // 
+            this.lblContagem.Location = new System.Drawing.Point(138, 47);
+            this.lblContagem.Name = "lblContagem";
+            this.lblContagem.Size = new System.Drawing.Size(99, 28);
+            this.lblContagem.Text = "Contagem:";
+            // 
+            // lblFilial
+            // 
+            this.lblFilial.Location = new System.Drawing.Point(4, 90);
+            this.lblFilial.Name = "lblFilial";
+            this.lblFilial.Size = new System.Drawing.Size(144, 27);
+            this.lblFilial.Text = "Filial:";
+            // 
+            // label1
+            // 
+            this.label1.Location = new System.Drawing.Point(4, 9);
+            this.label1.Name = "label1";
+            this.label1.Size = new System.Drawing.Size(233, 20);
+            this.label1.Text = "Operador:";
             // 
             // ViewDeposito
             // 
@@ -78,6 +110,10 @@
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Dpi;
             this.AutoScroll = true;
             this.ClientSize = new System.Drawing.Size(240, 268);
+            this.Controls.Add(this.lblInventario);
+            this.Controls.Add(this.lblContagem);
+            this.Controls.Add(this.lblFilial);
+            this.Controls.Add(this.label1);
             this.Controls.Add(this.lblDeposito);
             this.Controls.Add(this.cbDepositos);
             this.Controls.Add(this.lblOperador);
@@ -96,5 +132,9 @@
         private System.Windows.Forms.ComboBox cbDepositos;
         private System.Windows.Forms.Label lblDeposito;
         private System.Windows.Forms.MenuItem btnConfirmar;
+        private System.Windows.Forms.Label lblInventario;
+        private System.Windows.Forms.Label lblContagem;
+        private System.Windows.Forms.Label lblFilial;
+        private System.Windows.Forms.Label label1;
     }
 }

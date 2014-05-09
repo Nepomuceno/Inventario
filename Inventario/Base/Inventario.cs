@@ -24,6 +24,7 @@ namespace Sirius.Coletor.Base
         public int CodigoLocalizacao { get; set; }
         public DateTime DataInicio { get; set; }
         public DateTime? DatFim { get; set; }
+        public string InformacaoAdicional { get; set; }
         public IList<Leitura> Leituras { get; set; }
     }
 }
