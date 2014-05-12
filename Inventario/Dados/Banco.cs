@@ -27,6 +27,8 @@ namespace Sirius.Coletor.Dados
 
         public void Carregar(string caminho)
         {
+
+            
             var serializer = new JsonSerializer();
             var stream = File.Open(Path.Combine(caminho, CAMINHO_INVENTARIO), FileMode.OpenOrCreate);
             Inventarios = serializer.Deserialize <Colecao<Inventario>>(new JsonTextReader(new StreamReader(stream)));
@@ -108,6 +110,17 @@ namespace Sirius.Coletor.Dados
             if (Produtos == null)
             {
                 Produtos = new Colecao<Produto>();
+            }
+        }
+
+        public void ImportarDados()
+        {
+            using (SiriusService.SiriusService service = new Sirius.Coletor.SiriusService.SiriusService())
+            {
+                var inventariosPendentes = service.ListarInventariosPendentes();
+                var operadores = service.ListarOperadoresColetor(string.Empty);
+                var filiais = service.ListarFiliais();
+                var produtos = service.ListarTodosProdutos();
             }
         }
     }

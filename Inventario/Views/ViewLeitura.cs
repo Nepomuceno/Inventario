@@ -23,7 +23,7 @@ namespace Sirius.Coletor.Views
         private static Regex digitsOnly = new Regex(@"[^\d]");
         private BarcodeReader _reader;
 
-        public ViewLeitura(Form formAntigo,Inventario inventario,Localizacao localizacao, Deposito deposito)
+        public ViewLeitura(Form formAntigo, Inventario inventario, Localizacao localizacao, Deposito deposito)
         {
             _formAntigo = formAntigo;
             _inventario = inventario;
@@ -42,42 +42,43 @@ namespace Sirius.Coletor.Views
 
         private void InicializarLeitor()
         {
-            _reader = new BarcodeReader();
-            _reader.Start();
-            _reader.ListChanged += (sender, args) =>
-            {
-                if (args.ListChangedType == ListChangedType.ItemAdded)
-                {
-                    var readertext = ((BarcodeReader)sender).ReaderData.Text;
-                    var produto = Program.Banco.Produtos.FirstOrDefault(p => p.EANS.Any(e => e == readertext));
-                    if (produto == null)
-                    {
-                        MessageBox.Show("Este produto não foi encontrado.");
-                    }
-                    else
-                    {
-                        _leitura = new Leitura()
-                        {
-                            CodigoLocalizacao = _localizacao == null ? 0 : _localizacao.Codigo,
-                            CodigoOperador = Program.Operador.Codigo,
-                            CodigoProduto = produto.Codigo,
-                            DataDeLeitura = DateTime.Now,
-                            Quantidade = 1,
-                            TipoLeitura = produto.TipoLeitura
-                        };
-                        tbProduto.Text = produto.Codigo.ToString();
-                        tbProduto.Enabled = false;
-                        lblProdutoDescricao.Text = produto.Descricao;
-                        tbQuantidade.Text = "1";
-                        tbQuantidade.Enabled = _leitura.TipoLeitura != TipoLeitura.Unica;
-                    }
-                }
-            };
+            //_reader = new BarcodeReader();
+            //_reader.Start();
+            //_reader.ListChanged += (sender, args) =>
+            //{
+            //    if (args.ListChangedType == ListChangedType.ItemAdded)
+            //    {
+            //        var readertext = ((BarcodeReader)sender).ReaderData.Text;
+            //        var produto = Program.Banco.Produtos.FirstOrDefault(p => p.EANS.Any(e => e == readertext));
+            //        if (produto == null)
+            //        {
+            //            MessageBox.Show("Este produto não foi encontrado.");
+            //        }
+            //        else
+            //        {
+            //            _leitura = new Leitura()
+            //            {
+            //                CodigoLocalizacao = _localizacao == null ? 0 : _localizacao.Codigo,
+            //                CodigoOperador = Program.Operador.Codigo,
+            //                CodigoProduto = produto.Codigo,
+            //                DataDeLeitura = DateTime.Now,
+            //                Quantidade = 1,
+            //                TipoLeitura = produto.TipoLeitura
+            //            };
+            //            tbProduto.Text = produto.Codigo.ToString();
+            //            tbProduto.Enabled = false;
+            //            lblProdutoDescricao.Text = produto.Descricao;
+            //            tbQuantidade.Text = "1";
+            //            tbQuantidade.Enabled = _leitura.TipoLeitura != TipoLeitura.Unica;
+            //        }
+            //    }
+            //};
         }
 
         private void btnVoltar_Click(object sender, EventArgs e)
         {
-            _formAntigo.Show();
+            ViewFinalLocalizacao vwFinalizacao = 
+                new ViewFinalLocalizacao(_formAntigo, _inventario, _localizacao, _deposito, _localizacaoInventario);
             tbProduto.Enabled = true;
             tbProduto.Text = string.Empty;
             tbQuantidade.Text = string.Empty;
@@ -87,7 +88,7 @@ namespace Sirius.Coletor.Views
 
         private void btnSalvar_Click(object sender, EventArgs e)
         {
-            if (string.IsNullOrEmpty(tbQuantidade.Text)) 
+            if (string.IsNullOrEmpty(tbQuantidade.Text))
                 return;
 
             _leitura.Quantidade = int.Parse(tbQuantidade.Text);
@@ -113,8 +114,5 @@ namespace Sirius.Coletor.Views
             lblLocalizacao.Text += _localizacao.Codigo.ToString();
             tbQuantidade.Enabled = false;
         }
-
-        
-
     }
 }

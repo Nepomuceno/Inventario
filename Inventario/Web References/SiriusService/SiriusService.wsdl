@@ -1,0 +1,152 @@
+<?xml version="1.0" encoding="utf-8"?>
+<wsdl:definitions xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/" xmlns:soapenc="http://schemas.xmlsoap.org/soap/encoding/" xmlns:wsu="http://docs.oasis-open.org/wss/2004/01/oasis-200401-wss-wssecurity-utility-1.0.xsd" xmlns:wsa="http://schemas.xmlsoap.org/ws/2004/08/addressing" xmlns:tns="http://tempuri.org/" xmlns:wsap="http://schemas.xmlsoap.org/ws/2004/08/addressing/policy" xmlns:wsp="http://schemas.xmlsoap.org/ws/2004/09/policy" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:msc="http://schemas.microsoft.com/ws/2005/12/wsdl/contract" xmlns:wsaw="http://www.w3.org/2006/05/addressing/wsdl" xmlns:soap12="http://schemas.xmlsoap.org/wsdl/soap12/" xmlns:wsa10="http://www.w3.org/2005/08/addressing" xmlns:wsx="http://schemas.xmlsoap.org/ws/2004/09/mex" xmlns:wsam="http://www.w3.org/2007/05/addressing/metadata" name="SiriusService" targetNamespace="http://tempuri.org/" xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">
+  <wsdl:types>
+    <xsd:schema targetNamespace="http://tempuri.org/Imports">
+      <xsd:import schemaLocation="http://192.168.1.50/Hmlog/SiriusService.svc?xsd=xsd0" namespace="http://tempuri.org/" />
+      <xsd:import schemaLocation="http://192.168.1.50/Hmlog/SiriusService.svc?xsd=xsd1" namespace="http://schemas.microsoft.com/2003/10/Serialization/" />
+    </xsd:schema>
+  </wsdl:types>
+  <wsdl:message name="ISirius_ListarFiliais_InputMessage">
+    <wsdl:part name="parameters" element="tns:ListarFiliais" />
+  </wsdl:message>
+  <wsdl:message name="ISirius_ListarFiliais_OutputMessage">
+    <wsdl:part name="parameters" element="tns:ListarFiliaisResponse" />
+  </wsdl:message>
+  <wsdl:message name="ISirius_ListarInventariosPendentes_InputMessage">
+    <wsdl:part name="parameters" element="tns:ListarInventariosPendentes" />
+  </wsdl:message>
+  <wsdl:message name="ISirius_ListarInventariosPendentes_OutputMessage">
+    <wsdl:part name="parameters" element="tns:ListarInventariosPendentesResponse" />
+  </wsdl:message>
+  <wsdl:message name="ISirius_ListarDepositosPorFilial_InputMessage">
+    <wsdl:part name="parameters" element="tns:ListarDepositosPorFilial" />
+  </wsdl:message>
+  <wsdl:message name="ISirius_ListarDepositosPorFilial_OutputMessage">
+    <wsdl:part name="parameters" element="tns:ListarDepositosPorFilialResponse" />
+  </wsdl:message>
+  <wsdl:message name="ISirius_ListarLocalizacaoPorDeposito_InputMessage">
+    <wsdl:part name="parameters" element="tns:ListarLocalizacaoPorDeposito" />
+  </wsdl:message>
+  <wsdl:message name="ISirius_ListarLocalizacaoPorDeposito_OutputMessage">
+    <wsdl:part name="parameters" element="tns:ListarLocalizacaoPorDepositoResponse" />
+  </wsdl:message>
+  <wsdl:message name="ISirius_ListarTodosProdutos_InputMessage">
+    <wsdl:part name="parameters" element="tns:ListarTodosProdutos" />
+  </wsdl:message>
+  <wsdl:message name="ISirius_ListarTodosProdutos_OutputMessage">
+    <wsdl:part name="parameters" element="tns:ListarTodosProdutosResponse" />
+  </wsdl:message>
+  <wsdl:message name="ISirius_ListarOperadoresColetor_InputMessage">
+    <wsdl:part name="parameters" element="tns:ListarOperadoresColetor" />
+  </wsdl:message>
+  <wsdl:message name="ISirius_ListarOperadoresColetor_OutputMessage">
+    <wsdl:part name="parameters" element="tns:ListarOperadoresColetorResponse" />
+  </wsdl:message>
+  <wsdl:message name="ISirius_ListarInventarioPorCodigo_InputMessage">
+    <wsdl:part name="parameters" element="tns:ListarInventarioPorCodigo" />
+  </wsdl:message>
+  <wsdl:message name="ISirius_ListarInventarioPorCodigo_OutputMessage">
+    <wsdl:part name="parameters" element="tns:ListarInventarioPorCodigoResponse" />
+  </wsdl:message>
+  <wsdl:portType name="ISirius">
+    <wsdl:operation name="ListarFiliais">
+      <wsdl:input wsaw:Action="http://tempuri.org/ISirius/ListarFiliais" message="tns:ISirius_ListarFiliais_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/ISirius/ListarFiliaisResponse" message="tns:ISirius_ListarFiliais_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="ListarInventariosPendentes">
+      <wsdl:input wsaw:Action="http://tempuri.org/ISirius/ListarInventariosPendentes" message="tns:ISirius_ListarInventariosPendentes_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/ISirius/ListarInventariosPendentesResponse" message="tns:ISirius_ListarInventariosPendentes_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="ListarDepositosPorFilial">
+      <wsdl:input wsaw:Action="http://tempuri.org/ISirius/ListarDepositosPorFilial" message="tns:ISirius_ListarDepositosPorFilial_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/ISirius/ListarDepositosPorFilialResponse" message="tns:ISirius_ListarDepositosPorFilial_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="ListarLocalizacaoPorDeposito">
+      <wsdl:input wsaw:Action="http://tempuri.org/ISirius/ListarLocalizacaoPorDeposito" message="tns:ISirius_ListarLocalizacaoPorDeposito_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/ISirius/ListarLocalizacaoPorDepositoResponse" message="tns:ISirius_ListarLocalizacaoPorDeposito_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="ListarTodosProdutos">
+      <wsdl:input wsaw:Action="http://tempuri.org/ISirius/ListarTodosProdutos" message="tns:ISirius_ListarTodosProdutos_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/ISirius/ListarTodosProdutosResponse" message="tns:ISirius_ListarTodosProdutos_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="ListarOperadoresColetor">
+      <wsdl:input wsaw:Action="http://tempuri.org/ISirius/ListarOperadoresColetor" message="tns:ISirius_ListarOperadoresColetor_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/ISirius/ListarOperadoresColetorResponse" message="tns:ISirius_ListarOperadoresColetor_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="ListarInventarioPorCodigo">
+      <wsdl:input wsaw:Action="http://tempuri.org/ISirius/ListarInventarioPorCodigo" message="tns:ISirius_ListarInventarioPorCodigo_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/ISirius/ListarInventarioPorCodigoResponse" message="tns:ISirius_ListarInventarioPorCodigo_OutputMessage" />
+    </wsdl:operation>
+  </wsdl:portType>
+  <wsdl:binding name="BasicHttpBinding_ISirius" type="tns:ISirius">
+    <soap:binding transport="http://schemas.xmlsoap.org/soap/http" />
+    <wsdl:operation name="ListarFiliais">
+      <soap:operation soapAction="http://tempuri.org/ISirius/ListarFiliais" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="ListarInventariosPendentes">
+      <soap:operation soapAction="http://tempuri.org/ISirius/ListarInventariosPendentes" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="ListarDepositosPorFilial">
+      <soap:operation soapAction="http://tempuri.org/ISirius/ListarDepositosPorFilial" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="ListarLocalizacaoPorDeposito">
+      <soap:operation soapAction="http://tempuri.org/ISirius/ListarLocalizacaoPorDeposito" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="ListarTodosProdutos">
+      <soap:operation soapAction="http://tempuri.org/ISirius/ListarTodosProdutos" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="ListarOperadoresColetor">
+      <soap:operation soapAction="http://tempuri.org/ISirius/ListarOperadoresColetor" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="ListarInventarioPorCodigo">
+      <soap:operation soapAction="http://tempuri.org/ISirius/ListarInventarioPorCodigo" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+  </wsdl:binding>
+  <wsdl:service name="SiriusService">
+    <wsdl:port name="BasicHttpBinding_ISirius" binding="tns:BasicHttpBinding_ISirius">
+      <soap:address location="http://192.168.1.50/Hmlog/SiriusService.svc" />
+    </wsdl:port>
+  </wsdl:service>
+</wsdl:definitions>

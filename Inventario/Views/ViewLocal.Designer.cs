@@ -93,7 +93,7 @@
             // 
             // lblFilial
             // 
-            this.lblFilial.Location = new System.Drawing.Point(10, 111);
+            this.lblFilial.Location = new System.Drawing.Point(10, 101);
             this.lblFilial.Name = "lblFilial";
             this.lblFilial.Size = new System.Drawing.Size(201, 20);
             this.lblFilial.Text = "Filial:";

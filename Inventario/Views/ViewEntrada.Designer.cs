@@ -32,7 +32,6 @@
             this.mainMenu1 = new System.Windows.Forms.MainMenu();
             this.btnVoltar = new System.Windows.Forms.MenuItem();
             this.btnExecutarInventario = new System.Windows.Forms.Button();
-            this.lblOperador = new System.Windows.Forms.Label();
             this.btnEnviarInventario = new System.Windows.Forms.Button();
             this.btnParametros = new System.Windows.Forms.Button();
             this.SuspendLayout();
@@ -54,12 +53,6 @@
             this.btnExecutarInventario.TabIndex = 0;
             this.btnExecutarInventario.Text = "Executar Inventario";
             this.btnExecutarInventario.Click += new System.EventHandler(this.btnInventario_Click);
-            // 
-            // lblOperador
-            // 
-            this.lblOperador.Location = new System.Drawing.Point(4, 4);
-            this.lblOperador.Name = "lblOperador";
-            this.lblOperador.Size = new System.Drawing.Size(210, 25);
             // 
             // btnEnviarInventario
             // 
@@ -86,7 +79,6 @@
             this.ClientSize = new System.Drawing.Size(240, 268);
             this.Controls.Add(this.btnParametros);
             this.Controls.Add(this.btnEnviarInventario);
-            this.Controls.Add(this.lblOperador);
             this.Controls.Add(this.btnExecutarInventario);
             this.KeyPreview = true;
             this.Menu = this.mainMenu1;
@@ -99,7 +91,6 @@
         #endregion
 
         private System.Windows.Forms.Button btnExecutarInventario;
-        private System.Windows.Forms.Label lblOperador;
         private System.Windows.Forms.Button btnEnviarInventario;
         private System.Windows.Forms.MenuItem btnVoltar;
         private System.Windows.Forms.Button btnParametros;

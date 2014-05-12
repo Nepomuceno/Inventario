@@ -22,6 +22,7 @@ namespace Sirius.Coletor
         {
             Banco = new Banco();
             Banco.Carregar(Caminho);
+            Banco.ImportarDados();
             Demonstracao.PreencheDadosDemonstracao();
             Application.Run(new FrmLogin());
         }

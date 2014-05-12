@@ -59,7 +59,10 @@ namespace Sirius.Coletor.Views
         private void btnFinalizar_Click(object sender, EventArgs e)
         {
             _localizacaoInventario.InformacaoAdicional = tbInfoAdicional.Text;
+            _localizacaoInventario.DatFim = DateTime.Now;
             _inventario.LocalizacoesInventario.Add(_localizacaoInventario);
+            this.Close();
+            _formAntigo.Show();
         }
 
         

@@ -57,6 +57,8 @@
     </Reference>
     <Reference Include="System" />
     <Reference Include="System.Core" />
+    <Reference Include="System.Data.SqlServerCe, Version=3.5.0.0, Culture=neutral, PublicKeyToken=3be235df1c8d2ad3, processorArchitecture=MSIL" />
+    <Reference Include="System.Web.Services" />
     <Reference Include="System.Xml.Linq" />
     <Reference Include="System.Data.DataSetExtensions" />
     <Reference Include="System.Data" />
@@ -172,13 +174,44 @@
     <Compile Include="Views\ViewLogin.Designer.cs">
       <DependentUpon>ViewLogin.cs</DependentUpon>
     </Compile>
+    <Compile Include="Web References\SiriusService\Reference.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Reference.map</DependentUpon>
+    </Compile>
   </ItemGroup>
   <ItemGroup>
     <Content Include="Binarios\Newtonsoft.Json.Compact.dll" />
     <Content Include="Binarios\Newtonsoft.Json.Compact.xml" />
+    <None Include="Web References\SiriusService\SiriusService.disco" />
   </ItemGroup>
   <ItemGroup>
     <None Include="Properties\DataSources\Sirius.Coletor.Base.Leitura.datasource" />
+    <None Include="Web References\SiriusService\Reference.map">
+      <Generator>MSDiscoCodeGenerator</Generator>
+      <LastGenOutput>Reference.cs</LastGenOutput>
+    </None>
+    <None Include="Web References\SiriusService\SiriusService.wsdl" />
+    <None Include="Web References\SiriusService\SiriusService.xsd" />
+    <None Include="Web References\SiriusService\SiriusService0.xsd" />
+  </ItemGroup>
+  <ItemGroup>
+    <WebReferences Include="Web References\" />
+  </ItemGroup>
+  <ItemGroup>
+    <WebReferenceUrl Include="http://192.168.1.50/hmlog/siriusservice.svc">
+      <UrlBehavior>Static</UrlBehavior>
+      <RelPath>Web References\SiriusService\</RelPath>
+      <UpdateFromURL>http://192.168.1.50/hmlog/siriusservice.svc</UpdateFromURL>
+      <ServiceLocationURL>
+      </ServiceLocationURL>
+      <CachedDynamicPropName>
+      </CachedDynamicPropName>
+      <CachedAppSettingsObjectName>
+      </CachedAppSettingsObjectName>
+      <CachedSettingsPropName>
+      </CachedSettingsPropName>
+    </WebReferenceUrl>
   </ItemGroup>
   <ItemGroup>
     <Folder Include="Models\" />

@@ -31,10 +31,10 @@
         {
             this.mainMenu1 = new System.Windows.Forms.MainMenu();
             this.btnVoltar = new System.Windows.Forms.MenuItem();
+            this.btnExecutar = new System.Windows.Forms.MenuItem();
             this.lblOperador = new System.Windows.Forms.Label();
             this.lblDeposito = new System.Windows.Forms.Label();
             this.cbInventarios = new System.Windows.Forms.ComboBox();
-            this.btnExecutar = new System.Windows.Forms.MenuItem();
             this.SuspendLayout();
             // 
             // mainMenu1
@@ -47,11 +47,16 @@
             this.btnVoltar.Text = "Voltar";
             this.btnVoltar.Click += new System.EventHandler(this.btnVoltar_Click);
             // 
+            // btnExecutar
+            // 
+            this.btnExecutar.Text = "Executar";
+            this.btnExecutar.Click += new System.EventHandler(this.btnExecutar_Click);
+            // 
             // lblOperador
             // 
             this.lblOperador.Location = new System.Drawing.Point(4, 4);
             this.lblOperador.Name = "lblOperador";
-            this.lblOperador.Size = new System.Drawing.Size(210, 25);
+            this.lblOperador.Size = new System.Drawing.Size(233, 22);
             this.lblOperador.Text = "Operador";
             // 
             // lblDeposito
@@ -67,11 +72,6 @@
             this.cbInventarios.Name = "cbInventarios";
             this.cbInventarios.Size = new System.Drawing.Size(233, 22);
             this.cbInventarios.TabIndex = 6;
-            // 
-            // btnExecutar
-            // 
-            this.btnExecutar.Text = "Executar";
-            this.btnExecutar.Click += new System.EventHandler(this.btnExecutar_Click);
             // 
             // ViewInventario
             // 

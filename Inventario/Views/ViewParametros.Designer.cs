@@ -32,7 +32,6 @@
             this.mainMenu1 = new System.Windows.Forms.MainMenu();
             this.btnVoltar = new System.Windows.Forms.MenuItem();
             this.btnGerarDadosDemo = new System.Windows.Forms.Button();
-            this.lblOperador = new System.Windows.Forms.Label();
             this.SuspendLayout();
             // 
             // mainMenu1
@@ -46,18 +45,12 @@
             // 
             // btnGerarDadosDemo
             // 
-            this.btnGerarDadosDemo.Location = new System.Drawing.Point(27, 32);
+            this.btnGerarDadosDemo.Location = new System.Drawing.Point(28, 160);
             this.btnGerarDadosDemo.Name = "btnGerarDadosDemo";
             this.btnGerarDadosDemo.Size = new System.Drawing.Size(187, 47);
             this.btnGerarDadosDemo.TabIndex = 0;
             this.btnGerarDadosDemo.Text = "Gerar dados demo";
             this.btnGerarDadosDemo.Click += new System.EventHandler(this.btnGerarDadosDemo_Click);
-            // 
-            // lblOperador
-            // 
-            this.lblOperador.Location = new System.Drawing.Point(4, 4);
-            this.lblOperador.Name = "lblOperador";
-            this.lblOperador.Size = new System.Drawing.Size(210, 25);
             // 
             // ViewParametros
             // 
@@ -65,7 +58,6 @@
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Dpi;
             this.AutoScroll = true;
             this.ClientSize = new System.Drawing.Size(240, 268);
-            this.Controls.Add(this.lblOperador);
             this.Controls.Add(this.btnGerarDadosDemo);
             this.KeyPreview = true;
             this.Menu = this.mainMenu1;
@@ -78,7 +70,6 @@
         #endregion
 
         private System.Windows.Forms.Button btnGerarDadosDemo;
-        private System.Windows.Forms.Label lblOperador;
         private System.Windows.Forms.MenuItem btnVoltar;
     }
 }
