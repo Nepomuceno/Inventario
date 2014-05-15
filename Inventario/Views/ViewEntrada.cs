@@ -29,5 +29,11 @@ namespace Sirius.Coletor.Views
             var parametros = new ViewParametros(this);
             parametros.Show();
         }
+
+        private void btnEnviarInventario_Click(object sender, System.EventArgs e)
+        {
+            var inventario = new ViewEnviarInventario(this);
+            inventario.Show();
+        }
     }
 }

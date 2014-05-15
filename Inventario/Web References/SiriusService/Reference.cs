@@ -116,20 +116,48 @@ namespace Sirius.Coletor.SiriusService {
         }
         
         /// <remarks/>
-        [System.Web.Services.Protocols.SoapDocumentMethodAttribute("http://tempuri.org/ISirius/ListarTodosProdutos", RequestNamespace="http://tempuri.org/", ResponseNamespace="http://tempuri.org/", Use=System.Web.Services.Description.SoapBindingUse.Literal, ParameterStyle=System.Web.Services.Protocols.SoapParameterStyle.Wrapped)]
+        [System.Web.Services.Protocols.SoapDocumentMethodAttribute("http://tempuri.org/ISirius/RetornaQuantidadeProdutoCadastrados", RequestNamespace="http://tempuri.org/", ResponseNamespace="http://tempuri.org/", Use=System.Web.Services.Description.SoapBindingUse.Literal, ParameterStyle=System.Web.Services.Protocols.SoapParameterStyle.Wrapped)]
+        public void RetornaQuantidadeProdutoCadastrados(out int RetornaQuantidadeProdutoCadastradosResult, [System.Xml.Serialization.XmlIgnoreAttribute()] out bool RetornaQuantidadeProdutoCadastradosResultSpecified) {
+            object[] results = this.Invoke("RetornaQuantidadeProdutoCadastrados", new object[0]);
+            RetornaQuantidadeProdutoCadastradosResult = ((int)(results[0]));
+            RetornaQuantidadeProdutoCadastradosResultSpecified = ((bool)(results[1]));
+        }
+        
+        /// <remarks/>
+        public System.IAsyncResult BeginRetornaQuantidadeProdutoCadastrados(System.AsyncCallback callback, object asyncState) {
+            return this.BeginInvoke("RetornaQuantidadeProdutoCadastrados", new object[0], callback, asyncState);
+        }
+        
+        /// <remarks/>
+        public void EndRetornaQuantidadeProdutoCadastrados(System.IAsyncResult asyncResult, out int RetornaQuantidadeProdutoCadastradosResult, out bool RetornaQuantidadeProdutoCadastradosResultSpecified) {
+            object[] results = this.EndInvoke(asyncResult);
+            RetornaQuantidadeProdutoCadastradosResult = ((int)(results[0]));
+            RetornaQuantidadeProdutoCadastradosResultSpecified = ((bool)(results[1]));
+        }
+        
+        /// <remarks/>
+        [System.Web.Services.Protocols.SoapDocumentMethodAttribute("http://tempuri.org/ISirius/ListarProdutos", RequestNamespace="http://tempuri.org/", ResponseNamespace="http://tempuri.org/", Use=System.Web.Services.Description.SoapBindingUse.Literal, ParameterStyle=System.Web.Services.Protocols.SoapParameterStyle.Wrapped)]
         [return: System.Xml.Serialization.XmlElementAttribute(IsNullable=true)]
-        public string ListarTodosProdutos() {
-            object[] results = this.Invoke("ListarTodosProdutos", new object[0]);
+        public string ListarProdutos(int pagina, [System.Xml.Serialization.XmlIgnoreAttribute()] bool paginaSpecified, int registrosPorPagina, [System.Xml.Serialization.XmlIgnoreAttribute()] bool registrosPorPaginaSpecified) {
+            object[] results = this.Invoke("ListarProdutos", new object[] {
+                        pagina,
+                        paginaSpecified,
+                        registrosPorPagina,
+                        registrosPorPaginaSpecified});
             return ((string)(results[0]));
         }
         
         /// <remarks/>
-        public System.IAsyncResult BeginListarTodosProdutos(System.AsyncCallback callback, object asyncState) {
-            return this.BeginInvoke("ListarTodosProdutos", new object[0], callback, asyncState);
+        public System.IAsyncResult BeginListarProdutos(int pagina, bool paginaSpecified, int registrosPorPagina, bool registrosPorPaginaSpecified, System.AsyncCallback callback, object asyncState) {
+            return this.BeginInvoke("ListarProdutos", new object[] {
+                        pagina,
+                        paginaSpecified,
+                        registrosPorPagina,
+                        registrosPorPaginaSpecified}, callback, asyncState);
         }
         
         /// <remarks/>
-        public string EndListarTodosProdutos(System.IAsyncResult asyncResult) {
+        public string EndListarProdutos(System.IAsyncResult asyncResult) {
             object[] results = this.EndInvoke(asyncResult);
             return ((string)(results[0]));
         }
@@ -137,16 +165,14 @@ namespace Sirius.Coletor.SiriusService {
         /// <remarks/>
         [System.Web.Services.Protocols.SoapDocumentMethodAttribute("http://tempuri.org/ISirius/ListarOperadoresColetor", RequestNamespace="http://tempuri.org/", ResponseNamespace="http://tempuri.org/", Use=System.Web.Services.Description.SoapBindingUse.Literal, ParameterStyle=System.Web.Services.Protocols.SoapParameterStyle.Wrapped)]
         [return: System.Xml.Serialization.XmlElementAttribute(IsNullable=true)]
-        public string ListarOperadoresColetor([System.Xml.Serialization.XmlElementAttribute(IsNullable=true)] string tagColletor) {
-            object[] results = this.Invoke("ListarOperadoresColetor", new object[] {
-                        tagColletor});
+        public string ListarOperadoresColetor() {
+            object[] results = this.Invoke("ListarOperadoresColetor", new object[0]);
             return ((string)(results[0]));
         }
         
         /// <remarks/>
-        public System.IAsyncResult BeginListarOperadoresColetor(string tagColletor, System.AsyncCallback callback, object asyncState) {
-            return this.BeginInvoke("ListarOperadoresColetor", new object[] {
-                        tagColletor}, callback, asyncState);
+        public System.IAsyncResult BeginListarOperadoresColetor(System.AsyncCallback callback, object asyncState) {
+            return this.BeginInvoke("ListarOperadoresColetor", new object[0], callback, asyncState);
         }
         
         /// <remarks/>
@@ -176,6 +202,28 @@ namespace Sirius.Coletor.SiriusService {
         public string EndListarInventarioPorCodigo(System.IAsyncResult asyncResult) {
             object[] results = this.EndInvoke(asyncResult);
             return ((string)(results[0]));
+        }
+        
+        /// <remarks/>
+        [System.Web.Services.Protocols.SoapDocumentMethodAttribute("http://tempuri.org/ISirius/ImportarInventario", RequestNamespace="http://tempuri.org/", ResponseNamespace="http://tempuri.org/", Use=System.Web.Services.Description.SoapBindingUse.Literal, ParameterStyle=System.Web.Services.Protocols.SoapParameterStyle.Wrapped)]
+        public void ImportarInventario([System.Xml.Serialization.XmlElementAttribute(IsNullable=true)] string inventario, out int ImportarInventarioResult, [System.Xml.Serialization.XmlIgnoreAttribute()] out bool ImportarInventarioResultSpecified) {
+            object[] results = this.Invoke("ImportarInventario", new object[] {
+                        inventario});
+            ImportarInventarioResult = ((int)(results[0]));
+            ImportarInventarioResultSpecified = ((bool)(results[1]));
+        }
+        
+        /// <remarks/>
+        public System.IAsyncResult BeginImportarInventario(string inventario, System.AsyncCallback callback, object asyncState) {
+            return this.BeginInvoke("ImportarInventario", new object[] {
+                        inventario}, callback, asyncState);
+        }
+        
+        /// <remarks/>
+        public void EndImportarInventario(System.IAsyncResult asyncResult, out int ImportarInventarioResult, out bool ImportarInventarioResultSpecified) {
+            object[] results = this.EndInvoke(asyncResult);
+            ImportarInventarioResult = ((int)(results[0]));
+            ImportarInventarioResultSpecified = ((bool)(results[1]));
         }
     }
 }

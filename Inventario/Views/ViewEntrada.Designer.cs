@@ -61,6 +61,7 @@
             this.btnEnviarInventario.Size = new System.Drawing.Size(187, 47);
             this.btnEnviarInventario.TabIndex = 1;
             this.btnEnviarInventario.Text = "Enviar Inventario";
+            this.btnEnviarInventario.Click += new System.EventHandler(this.btnEnviarInventario_Click);
             // 
             // btnParametros
             // 

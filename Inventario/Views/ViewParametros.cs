@@ -35,5 +35,10 @@ namespace Sirius.Coletor.Views
         {
             Demonstracao.PreencheDadosDemonstracao();
         }
+
+        private void btnImportarDados_Click(object sender, EventArgs e)
+        {
+            Program.Banco.ImportarDados(true, true, true, true);
+        }
     }
 }

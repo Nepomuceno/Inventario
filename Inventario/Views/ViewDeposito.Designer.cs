@@ -60,48 +60,48 @@
             // 
             this.lblOperador.Location = new System.Drawing.Point(4, 4);
             this.lblOperador.Name = "lblOperador";
-            this.lblOperador.Size = new System.Drawing.Size(210, 25);
+            this.lblOperador.Size = new System.Drawing.Size(233, 25);
             // 
             // cbDepositos
             // 
-            this.cbDepositos.Location = new System.Drawing.Point(4, 154);
+            this.cbDepositos.Location = new System.Drawing.Point(4, 193);
             this.cbDepositos.Name = "cbDepositos";
             this.cbDepositos.Size = new System.Drawing.Size(233, 22);
             this.cbDepositos.TabIndex = 1;
             // 
             // lblDeposito
             // 
-            this.lblDeposito.Location = new System.Drawing.Point(3, 131);
+            this.lblDeposito.Location = new System.Drawing.Point(3, 167);
             this.lblDeposito.Name = "lblDeposito";
             this.lblDeposito.Size = new System.Drawing.Size(128, 20);
             this.lblDeposito.Text = "Escolha o deposito";
             // 
             // lblInventario
             // 
-            this.lblInventario.Location = new System.Drawing.Point(4, 47);
+            this.lblInventario.Location = new System.Drawing.Point(3, 79);
             this.lblInventario.Name = "lblInventario";
             this.lblInventario.Size = new System.Drawing.Size(128, 28);
             this.lblInventario.Text = "Inventario:";
             // 
             // lblContagem
             // 
-            this.lblContagem.Location = new System.Drawing.Point(138, 47);
+            this.lblContagem.Location = new System.Drawing.Point(137, 79);
             this.lblContagem.Name = "lblContagem";
             this.lblContagem.Size = new System.Drawing.Size(99, 28);
             this.lblContagem.Text = "Contagem:";
             // 
             // lblFilial
             // 
-            this.lblFilial.Location = new System.Drawing.Point(4, 90);
+            this.lblFilial.Location = new System.Drawing.Point(4, 125);
             this.lblFilial.Name = "lblFilial";
-            this.lblFilial.Size = new System.Drawing.Size(144, 27);
+            this.lblFilial.Size = new System.Drawing.Size(232, 27);
             this.lblFilial.Text = "Filial:";
             // 
             // label1
             // 
-            this.label1.Location = new System.Drawing.Point(4, 9);
+            this.label1.Location = new System.Drawing.Point(4, 40);
             this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(233, 20);
+            this.label1.Size = new System.Drawing.Size(233, 25);
             this.label1.Text = "Operador:";
             // 
             // ViewDeposito

@@ -103,7 +103,7 @@
             this.Controls.Add(this.lblUsuario);
             this.Menu = this.mainMenu1;
             this.Name = "FrmLogin";
-            this.Text = "Form1";
+            this.Text = "Inventario";
             this.ResumeLayout(false);
 
         }

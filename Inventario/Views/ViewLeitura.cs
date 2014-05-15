@@ -32,7 +32,8 @@ namespace Sirius.Coletor.Views
             _localizacaoInventario = new LocalizacaoInventario()
             {
                 CodigoLocalizacao = localizacao.Codigo,
-                DataInicio = DateTime.Now
+                DataInicio = DateTime.Now,
+                Leituras = new Colecao<Leitura>()
             };
             InitializeComponent();
             tbProduto.Enabled = true;
@@ -42,37 +43,37 @@ namespace Sirius.Coletor.Views
 
         private void InicializarLeitor()
         {
-            //_reader = new BarcodeReader();
-            //_reader.Start();
-            //_reader.ListChanged += (sender, args) =>
-            //{
-            //    if (args.ListChangedType == ListChangedType.ItemAdded)
-            //    {
-            //        var readertext = ((BarcodeReader)sender).ReaderData.Text;
-            //        var produto = Program.Banco.Produtos.FirstOrDefault(p => p.EANS.Any(e => e == readertext));
-            //        if (produto == null)
-            //        {
-            //            MessageBox.Show("Este produto não foi encontrado.");
-            //        }
-            //        else
-            //        {
-            //            _leitura = new Leitura()
-            //            {
-            //                CodigoLocalizacao = _localizacao == null ? 0 : _localizacao.Codigo,
-            //                CodigoOperador = Program.Operador.Codigo,
-            //                CodigoProduto = produto.Codigo,
-            //                DataDeLeitura = DateTime.Now,
-            //                Quantidade = 1,
-            //                TipoLeitura = produto.TipoLeitura
-            //            };
-            //            tbProduto.Text = produto.Codigo.ToString();
-            //            tbProduto.Enabled = false;
-            //            lblProdutoDescricao.Text = produto.Descricao;
-            //            tbQuantidade.Text = "1";
-            //            tbQuantidade.Enabled = _leitura.TipoLeitura != TipoLeitura.Unica;
-            //        }
-            //    }
-            //};
+            _reader = new BarcodeReader();
+            _reader.Start();
+            _reader.ListChanged += (sender, args) =>
+            {
+                if (args.ListChangedType == ListChangedType.ItemAdded)
+                {
+                    var readertext = ((BarcodeReader)sender).ReaderData.Text;
+                    var produto = Program.Banco.Produtos.FirstOrDefault(p => p.EANS.Any(e => e == readertext));
+                    if (produto == null)
+                    {
+                        MessageBox.Show("Este produto não foi encontrado.");
+                    }
+                    else
+                    {
+                        _leitura = new Leitura()
+                        {
+                            CodigoLocalizacao = _localizacao == null ? 0 : _localizacao.Codigo,
+                            CodigoOperador = Program.Operador.Codigo,
+                            CodigoProduto = produto.Codigo,
+                            DataDeLeitura = DateTime.Now,
+                            Quantidade = 1,
+                            TipoLeitura = produto.TipoLeitura
+                        };
+                        tbProduto.Text = produto.Codigo.ToString();
+                        tbProduto.Enabled = false;
+                        lblProdutoDescricao.Text = produto.Descricao;
+                        tbQuantidade.Text = "1";
+                        tbQuantidade.Enabled = _leitura.TipoLeitura != TipoLeitura.Unica;
+                    }
+                }
+            };
         }
 
         private void btnVoltar_Click(object sender, EventArgs e)
@@ -83,6 +84,8 @@ namespace Sirius.Coletor.Views
             tbProduto.Text = string.Empty;
             tbQuantidade.Text = string.Empty;
             tbQuantidade.Enabled = false;
+            vwFinalizacao.Show();
+            _reader.Dispose();
             Close();
         }
 
@@ -96,6 +99,7 @@ namespace Sirius.Coletor.Views
             lblProduto.Text = string.Empty;
             tbQuantidade.Text = string.Empty;
             tbQuantidade.Enabled = false;
+            lblProdutoDescricao.Text = string.Empty;
             _localizacaoInventario.Leituras.Add(_leitura);
             _leitura = null;
         }

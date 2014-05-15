@@ -19,9 +19,6 @@ namespace Sirius.Coletor.Views
         private readonly Localizacao _localizacao;
         private readonly Deposito _deposito;
         private readonly LocalizacaoInventario _localizacaoInventario;
-        private Leitura _leitura;
-        private readonly Produto _produto;
-        private BarcodeReader _reader;
 
         public ViewFinalLocalizacao(Form formAntigo, Inventario inventario, Localizacao localizacao, Deposito deposito, LocalizacaoInventario localizacaoInventario)
         {

@@ -18,7 +18,9 @@ namespace Sirius.Coletor.Views
             _inventarioCorrente = inventarioCorrente;
             InitializeComponent();
             cbDepositos.DisplayMember = "Nome";
-            cbDepositos.DataSource = _inventarioCorrente.Filial.Depositos;
+            var depositos = Program.Banco.Filiais.
+                FirstOrDefault(f => f.Codigo == _inventarioCorrente.Filial.Codigo).Depositos;
+            cbDepositos.DataSource =  depositos;
             InicializaLabels();
         }
 

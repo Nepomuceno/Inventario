@@ -52,23 +52,36 @@
       </xs:sequence>
     </xs:complexType>
   </xs:element>
-  <xs:element name="ListarTodosProdutos">
+  <xs:element name="RetornaQuantidadeProdutoCadastrados">
     <xs:complexType>
       <xs:sequence />
     </xs:complexType>
   </xs:element>
-  <xs:element name="ListarTodosProdutosResponse">
+  <xs:element name="RetornaQuantidadeProdutoCadastradosResponse">
     <xs:complexType>
       <xs:sequence>
-        <xs:element minOccurs="0" name="ListarTodosProdutosResult" nillable="true" type="xs:string" />
+        <xs:element minOccurs="0" name="RetornaQuantidadeProdutoCadastradosResult" type="xs:int" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="ListarProdutos">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" name="pagina" type="xs:int" />
+        <xs:element minOccurs="0" name="registrosPorPagina" type="xs:int" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="ListarProdutosResponse">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" name="ListarProdutosResult" nillable="true" type="xs:string" />
       </xs:sequence>
     </xs:complexType>
   </xs:element>
   <xs:element name="ListarOperadoresColetor">
     <xs:complexType>
-      <xs:sequence>
-        <xs:element minOccurs="0" name="tagColletor" nillable="true" type="xs:string" />
-      </xs:sequence>
+      <xs:sequence />
     </xs:complexType>
   </xs:element>
   <xs:element name="ListarOperadoresColetorResponse">
@@ -89,6 +102,20 @@
     <xs:complexType>
       <xs:sequence>
         <xs:element minOccurs="0" name="ListarInventarioPorCodigoResult" nillable="true" type="xs:string" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="ImportarInventario">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" name="inventario" nillable="true" type="xs:string" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="ImportarInventarioResponse">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" name="ImportarInventarioResult" type="xs:int" />
       </xs:sequence>
     </xs:complexType>
   </xs:element>

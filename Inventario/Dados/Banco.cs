@@ -3,35 +3,38 @@ using System.IO;
 using System.Xml.Serialization;
 using Sirius.Coletor.Base;
 using Newtonsoft.Json;
+using System.Runtime.InteropServices;
+using System;
 
 namespace Sirius.Coletor.Dados
 {
     public class Banco
     {
-        
+        private const int BATCH_SIZE = 1000;
         private const string CAMINHO_INVENTARIO = "/Inventarios.json";
         private const string CAMINHO_OPERADORES = "/Operadores.json";
-        private const string CAMINHO_FILIAIS = "/Filials.json";
+        private const string CAMINHO_FILIAIS = "/Filiais.json";
         private const string CAMINHO_PRODUTOS = "/Produtos.json";
+        private bool _inicializado = false;
+        public bool Inicializado { get { return _inicializado; } }
 
         public ParametrosDeInicializacao ParametrosDeInicializacao { get; set; }
 
 
         public Colecao<Inventario> Inventarios { get; set; }
-        
+
         public Colecao<Operador> Operadores { get; set; }
-        
+
         public Colecao<Filial> Filiais { get; set; }
 
         public Colecao<Produto> Produtos { get; set; }
 
         public void Carregar(string caminho)
         {
-
-            
             var serializer = new JsonSerializer();
             var stream = File.Open(Path.Combine(caminho, CAMINHO_INVENTARIO), FileMode.OpenOrCreate);
-            Inventarios = serializer.Deserialize <Colecao<Inventario>>(new JsonTextReader(new StreamReader(stream)));
+            var inventarios = new StreamReader(stream).ReadToEnd();
+            Inventarios = JsonConvert.DeserializeObject<Colecao<Inventario>>(inventarios);
             stream.Flush();
             stream.Dispose();
             stream = File.Open(Path.Combine(caminho, CAMINHO_OPERADORES), FileMode.OpenOrCreate);
@@ -54,16 +57,28 @@ namespace Sirius.Coletor.Dados
             Inicialize();
             var serializer = new JsonSerializer();
             var stream = File.Open(Path.Combine(caminho, CAMINHO_INVENTARIO), FileMode.OpenOrCreate);
-            serializer.Serialize(new JsonTextWriter(new StreamWriter(stream)), Inventarios);
+            var textWriter = new JsonTextWriter(new StreamWriter(stream)) { Formatting = Formatting.Indented };
+            serializer.Serialize(textWriter, Inventarios);
+            textWriter.Flush();
+            stream.Flush();
             stream.Dispose();
             stream = File.Open(Path.Combine(caminho, CAMINHO_OPERADORES), FileMode.OpenOrCreate);
-            serializer.Serialize(new JsonTextWriter(new StreamWriter(stream)), Operadores);
+            textWriter = new JsonTextWriter(new StreamWriter(stream));
+            serializer.Serialize(textWriter, Operadores);
+            textWriter.Flush();
+            stream.Flush();
             stream.Dispose();
             stream = File.Open(Path.Combine(caminho, CAMINHO_FILIAIS), FileMode.OpenOrCreate);
-            serializer.Serialize(new JsonTextWriter(new StreamWriter(stream)), Filiais);
+            textWriter = new JsonTextWriter(new StreamWriter(stream));
+            serializer.Serialize(textWriter, Filiais);
+            textWriter.Flush();
+            stream.Flush();
             stream.Dispose();
             stream = File.Open(Path.Combine(caminho, CAMINHO_PRODUTOS), FileMode.OpenOrCreate);
-            serializer.Serialize(new JsonTextWriter(new StreamWriter(stream)), Produtos);
+            textWriter = new JsonTextWriter(new StreamWriter(stream));
+            serializer.Serialize(textWriter, Produtos);
+            textWriter.Flush();
+            stream.Flush();
             stream.Dispose();
         }
 
@@ -111,16 +126,49 @@ namespace Sirius.Coletor.Dados
             {
                 Produtos = new Colecao<Produto>();
             }
+            ParametrosDeInicializacao = new ParametrosDeInicializacao()
+            {
+                LeituraLocalAposCadaItem = false,
+                TipoLeitura = TipoLeitura.Multipla
+            };
+            _inicializado = true;
         }
 
-        public void ImportarDados()
+        public void ImportarDados(bool importarInventarios, bool importarOperadores, bool importarFiliais, bool importarProdutos)
         {
-            using (SiriusService.SiriusService service = new Sirius.Coletor.SiriusService.SiriusService())
+            using (var service = new SiriusService.SiriusService())
             {
-                var inventariosPendentes = service.ListarInventariosPendentes();
-                var operadores = service.ListarOperadoresColetor(string.Empty);
-                var filiais = service.ListarFiliais();
-                var produtos = service.ListarTodosProdutos();
+                if (importarInventarios)
+                {
+                    var inventariosPendentes = service.ListarInventariosPendentes();
+                    this.Inventarios = JsonConvert.DeserializeObject<Colecao<Inventario>>(inventariosPendentes);
+                }
+                if (importarOperadores)
+                {
+                    var operadores = service.ListarOperadoresColetor();
+                    if (!string.IsNullOrEmpty(operadores))
+                    {
+                        this.Operadores = JsonConvert.DeserializeObject<Colecao<Operador>>(operadores);
+                    }
+                }
+                if (importarFiliais)
+                {
+                    var filiais = service.ListarFiliais();
+                    this.Filiais = JsonConvert.DeserializeObject<Colecao<Filial>>(filiais);
+                }
+                if (importarProdutos)
+                {
+                    int totalProdutos;
+                    bool specified;
+                    service.RetornaQuantidadeProdutoCadastrados(out totalProdutos, out specified);
+                    this.Produtos = new Colecao<Produto>();
+                    for (int i = 0; i < (totalProdutos / BATCH_SIZE) + 1; i++)
+                    {
+                        var produtos = service.ListarProdutos(i, true, BATCH_SIZE, true);
+                        this.Produtos.AddRange(JsonConvert.DeserializeObject<Colecao<Produto>>(produtos));
+                        GC.Collect();
+                    }
+                }
             }
         }
     }

@@ -5,6 +5,7 @@ using Sirius.Coletor.Base;
 using Sirius.Coletor.Dados;
 using Sirius.Coletor.Util;
 using Sirius.Coletor.Views;
+using System.Threading;
 
 namespace Sirius.Coletor
 {
@@ -21,10 +22,12 @@ namespace Sirius.Coletor
         static void Main()
         {
             Banco = new Banco();
-            Banco.Carregar(Caminho);
-            Banco.ImportarDados();
-            Demonstracao.PreencheDadosDemonstracao();
+            new Thread(new ThreadStart(CarregarBase)).Start();
             Application.Run(new FrmLogin());
+        }
+        static void CarregarBase()
+        {
+            Banco.Carregar(Caminho);
         }
         
     }

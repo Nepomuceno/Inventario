@@ -30,11 +30,17 @@
   <wsdl:message name="ISirius_ListarLocalizacaoPorDeposito_OutputMessage">
     <wsdl:part name="parameters" element="tns:ListarLocalizacaoPorDepositoResponse" />
   </wsdl:message>
-  <wsdl:message name="ISirius_ListarTodosProdutos_InputMessage">
-    <wsdl:part name="parameters" element="tns:ListarTodosProdutos" />
+  <wsdl:message name="ISirius_RetornaQuantidadeProdutoCadastrados_InputMessage">
+    <wsdl:part name="parameters" element="tns:RetornaQuantidadeProdutoCadastrados" />
   </wsdl:message>
-  <wsdl:message name="ISirius_ListarTodosProdutos_OutputMessage">
-    <wsdl:part name="parameters" element="tns:ListarTodosProdutosResponse" />
+  <wsdl:message name="ISirius_RetornaQuantidadeProdutoCadastrados_OutputMessage">
+    <wsdl:part name="parameters" element="tns:RetornaQuantidadeProdutoCadastradosResponse" />
+  </wsdl:message>
+  <wsdl:message name="ISirius_ListarProdutos_InputMessage">
+    <wsdl:part name="parameters" element="tns:ListarProdutos" />
+  </wsdl:message>
+  <wsdl:message name="ISirius_ListarProdutos_OutputMessage">
+    <wsdl:part name="parameters" element="tns:ListarProdutosResponse" />
   </wsdl:message>
   <wsdl:message name="ISirius_ListarOperadoresColetor_InputMessage">
     <wsdl:part name="parameters" element="tns:ListarOperadoresColetor" />
@@ -47,6 +53,12 @@
   </wsdl:message>
   <wsdl:message name="ISirius_ListarInventarioPorCodigo_OutputMessage">
     <wsdl:part name="parameters" element="tns:ListarInventarioPorCodigoResponse" />
+  </wsdl:message>
+  <wsdl:message name="ISirius_ImportarInventario_InputMessage">
+    <wsdl:part name="parameters" element="tns:ImportarInventario" />
+  </wsdl:message>
+  <wsdl:message name="ISirius_ImportarInventario_OutputMessage">
+    <wsdl:part name="parameters" element="tns:ImportarInventarioResponse" />
   </wsdl:message>
   <wsdl:portType name="ISirius">
     <wsdl:operation name="ListarFiliais">
@@ -65,9 +77,13 @@
       <wsdl:input wsaw:Action="http://tempuri.org/ISirius/ListarLocalizacaoPorDeposito" message="tns:ISirius_ListarLocalizacaoPorDeposito_InputMessage" />
       <wsdl:output wsaw:Action="http://tempuri.org/ISirius/ListarLocalizacaoPorDepositoResponse" message="tns:ISirius_ListarLocalizacaoPorDeposito_OutputMessage" />
     </wsdl:operation>
-    <wsdl:operation name="ListarTodosProdutos">
-      <wsdl:input wsaw:Action="http://tempuri.org/ISirius/ListarTodosProdutos" message="tns:ISirius_ListarTodosProdutos_InputMessage" />
-      <wsdl:output wsaw:Action="http://tempuri.org/ISirius/ListarTodosProdutosResponse" message="tns:ISirius_ListarTodosProdutos_OutputMessage" />
+    <wsdl:operation name="RetornaQuantidadeProdutoCadastrados">
+      <wsdl:input wsaw:Action="http://tempuri.org/ISirius/RetornaQuantidadeProdutoCadastrados" message="tns:ISirius_RetornaQuantidadeProdutoCadastrados_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/ISirius/RetornaQuantidadeProdutoCadastradosResponse" message="tns:ISirius_RetornaQuantidadeProdutoCadastrados_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="ListarProdutos">
+      <wsdl:input wsaw:Action="http://tempuri.org/ISirius/ListarProdutos" message="tns:ISirius_ListarProdutos_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/ISirius/ListarProdutosResponse" message="tns:ISirius_ListarProdutos_OutputMessage" />
     </wsdl:operation>
     <wsdl:operation name="ListarOperadoresColetor">
       <wsdl:input wsaw:Action="http://tempuri.org/ISirius/ListarOperadoresColetor" message="tns:ISirius_ListarOperadoresColetor_InputMessage" />
@@ -76,6 +92,10 @@
     <wsdl:operation name="ListarInventarioPorCodigo">
       <wsdl:input wsaw:Action="http://tempuri.org/ISirius/ListarInventarioPorCodigo" message="tns:ISirius_ListarInventarioPorCodigo_InputMessage" />
       <wsdl:output wsaw:Action="http://tempuri.org/ISirius/ListarInventarioPorCodigoResponse" message="tns:ISirius_ListarInventarioPorCodigo_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="ImportarInventario">
+      <wsdl:input wsaw:Action="http://tempuri.org/ISirius/ImportarInventario" message="tns:ISirius_ImportarInventario_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/ISirius/ImportarInventarioResponse" message="tns:ISirius_ImportarInventario_OutputMessage" />
     </wsdl:operation>
   </wsdl:portType>
   <wsdl:binding name="BasicHttpBinding_ISirius" type="tns:ISirius">
@@ -116,8 +136,17 @@
         <soap:body use="literal" />
       </wsdl:output>
     </wsdl:operation>
-    <wsdl:operation name="ListarTodosProdutos">
-      <soap:operation soapAction="http://tempuri.org/ISirius/ListarTodosProdutos" style="document" />
+    <wsdl:operation name="RetornaQuantidadeProdutoCadastrados">
+      <soap:operation soapAction="http://tempuri.org/ISirius/RetornaQuantidadeProdutoCadastrados" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="ListarProdutos">
+      <soap:operation soapAction="http://tempuri.org/ISirius/ListarProdutos" style="document" />
       <wsdl:input>
         <soap:body use="literal" />
       </wsdl:input>
@@ -136,6 +165,15 @@
     </wsdl:operation>
     <wsdl:operation name="ListarInventarioPorCodigo">
       <soap:operation soapAction="http://tempuri.org/ISirius/ListarInventarioPorCodigo" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="ImportarInventario">
+      <soap:operation soapAction="http://tempuri.org/ISirius/ImportarInventario" style="document" />
       <wsdl:input>
         <soap:body use="literal" />
       </wsdl:input>
