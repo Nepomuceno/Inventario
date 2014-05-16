@@ -58,49 +58,49 @@
             // 
             // cbLocalizacoes
             // 
-            this.cbLocalizacoes.Location = new System.Drawing.Point(10, 185);
+            this.cbLocalizacoes.Location = new System.Drawing.Point(10, 127);
             this.cbLocalizacoes.Name = "cbLocalizacoes";
             this.cbLocalizacoes.Size = new System.Drawing.Size(226, 22);
             this.cbLocalizacoes.TabIndex = 1;
             // 
             // lblLocal
             // 
-            this.lblLocal.Location = new System.Drawing.Point(9, 162);
+            this.lblLocal.Location = new System.Drawing.Point(10, 104);
             this.lblLocal.Name = "lblLocal";
             this.lblLocal.Size = new System.Drawing.Size(128, 20);
             this.lblLocal.Text = "Escolha o local";
             // 
             // lblDeposito
             // 
-            this.lblDeposito.Location = new System.Drawing.Point(9, 131);
+            this.lblDeposito.Location = new System.Drawing.Point(10, 84);
             this.lblDeposito.Name = "lblDeposito";
-            this.lblDeposito.Size = new System.Drawing.Size(202, 20);
+            this.lblDeposito.Size = new System.Drawing.Size(227, 20);
             this.lblDeposito.Text = "Deposito:";
             // 
             // lblInventario
             // 
-            this.lblInventario.Location = new System.Drawing.Point(10, 44);
+            this.lblInventario.Location = new System.Drawing.Point(10, 36);
             this.lblInventario.Name = "lblInventario";
             this.lblInventario.Size = new System.Drawing.Size(127, 28);
             this.lblInventario.Text = "Inventario:";
             // 
             // lblContagem
             // 
-            this.lblContagem.Location = new System.Drawing.Point(137, 44);
+            this.lblContagem.Location = new System.Drawing.Point(139, 36);
             this.lblContagem.Name = "lblContagem";
             this.lblContagem.Size = new System.Drawing.Size(101, 28);
             this.lblContagem.Text = "Contagem:";
             // 
             // lblFilial
             // 
-            this.lblFilial.Location = new System.Drawing.Point(10, 101);
+            this.lblFilial.Location = new System.Drawing.Point(10, 64);
             this.lblFilial.Name = "lblFilial";
-            this.lblFilial.Size = new System.Drawing.Size(201, 20);
+            this.lblFilial.Size = new System.Drawing.Size(227, 20);
             this.lblFilial.Text = "Filial:";
             // 
             // lblOperador
             // 
-            this.lblOperador.Location = new System.Drawing.Point(9, 14);
+            this.lblOperador.Location = new System.Drawing.Point(10, 10);
             this.lblOperador.Name = "lblOperador";
             this.lblOperador.Size = new System.Drawing.Size(227, 20);
             this.lblOperador.Text = "Operador:";
@@ -110,7 +110,7 @@
             this.AutoScaleDimensions = new System.Drawing.SizeF(96F, 96F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Dpi;
             this.AutoScroll = true;
-            this.ClientSize = new System.Drawing.Size(240, 268);
+            this.ClientSize = new System.Drawing.Size(240, 188);
             this.Controls.Add(this.lblDeposito);
             this.Controls.Add(this.lblInventario);
             this.Controls.Add(this.lblContagem);

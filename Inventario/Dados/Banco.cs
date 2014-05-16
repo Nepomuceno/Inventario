@@ -10,16 +10,25 @@ namespace Sirius.Coletor.Dados
 {
     public class Banco
     {
-        private const int BATCH_SIZE = 1000;
-        private const string CAMINHO_INVENTARIO = "/Inventarios.json";
-        private const string CAMINHO_OPERADORES = "/Operadores.json";
-        private const string CAMINHO_FILIAIS = "/Filiais.json";
-        private const string CAMINHO_PRODUTOS = "/Produtos.json";
-        private bool _inicializado = false;
-        public bool Inicializado { get { return _inicializado; } }
+        public Banco()
+        {
+            ParametrosDeInicializacao = new ParametrosDeInicializacao();
+            Inventarios = new Colecao<Inventario>();
+            Operadores = new Colecao<Operador>();
+            Filiais = new Colecao<Filial>();
+            Produtos = new Colecao<Produto>();
+        }
+        // ReSharper disable InconsistentNaming
+        //Default name for file paths following MS Specs
+        private const int BATCH_SIZE = 500;
+        private const string CAMINHO_INVENTARIO = "\\Inventarios.json";
+        private const string CAMINHO_OPERADORES = "\\Operadores.json";
+        private const string CAMINHO_FILIAIS = "\\Filiais.json";
+        private const string CAMINHO_PRODUTOS = "\\Produtos.json";
+        private const string CAMINHO_PARAMETROS = "\\Parametros.json";
+        // ReSharper restore InconsistentNaming
 
         public ParametrosDeInicializacao ParametrosDeInicializacao { get; set; }
-
 
         public Colecao<Inventario> Inventarios { get; set; }
 
@@ -28,111 +37,119 @@ namespace Sirius.Coletor.Dados
         public Colecao<Filial> Filiais { get; set; }
 
         public Colecao<Produto> Produtos { get; set; }
-
+        
+        
         public void Carregar(string caminho)
         {
-            var serializer = new JsonSerializer();
-            var stream = File.Open(Path.Combine(caminho, CAMINHO_INVENTARIO), FileMode.OpenOrCreate);
-            var inventarios = new StreamReader(stream).ReadToEnd();
-            Inventarios = JsonConvert.DeserializeObject<Colecao<Inventario>>(inventarios);
-            stream.Flush();
-            stream.Dispose();
-            stream = File.Open(Path.Combine(caminho, CAMINHO_OPERADORES), FileMode.OpenOrCreate);
-            Operadores = serializer.Deserialize<Colecao<Operador>>(new JsonTextReader(new StreamReader(stream)));
-            stream.Flush();
-            stream.Dispose();
-            stream = File.Open(Path.Combine(caminho, CAMINHO_FILIAIS), FileMode.OpenOrCreate);
-            Filiais = serializer.Deserialize<Colecao<Filial>>(new JsonTextReader(new StreamReader(stream)));
-            stream.Flush();
-            stream.Dispose();
-            stream = File.Open(Path.Combine(caminho, CAMINHO_PRODUTOS), FileMode.OpenOrCreate);
-            Produtos = serializer.Deserialize<Colecao<Produto>>(new JsonTextReader(new StreamReader(stream)));
-            stream.Flush();
-            stream.Dispose();
-            Inicialize();
+            var inventarios = DesserializeFromFile<Colecao<Inventario>>(PathUtil.Combine(caminho, CAMINHO_INVENTARIO));
+            if (inventarios != null)
+            {
+                Inventarios = inventarios;
+            }
+            var operadores = DesserializeFromFile<Colecao<Operador>>(PathUtil.Combine(caminho, CAMINHO_OPERADORES));
+            if (operadores != null)
+            {
+                Operadores = operadores;
+            }
+            var filiais = DesserializeFromFile<Colecao<Filial>>(PathUtil.Combine(caminho, CAMINHO_FILIAIS));
+            if (filiais != null)
+            {
+                Filiais = filiais;
+            }
+            var produtos = DesserializeFromFile<Colecao<Produto>>(PathUtil.Combine(caminho, CAMINHO_PRODUTOS));
+            if (produtos != null)
+            {
+                Produtos = produtos;
+            }
+            var parametrosDeInicializacao = DesserializeFromFile<ParametrosDeInicializacao>(PathUtil.Combine(caminho, CAMINHO_PARAMETROS));
+            if (parametrosDeInicializacao != null)
+            {
+                ParametrosDeInicializacao = parametrosDeInicializacao;
+            }
         }
+
+        public void SalvarOperadores(string caminho)
+        {
+            SerializeToFile(PathUtil.Combine(caminho, CAMINHO_OPERADORES), Operadores);
+        }
+
+        public void SalvarFiliais(string caminho)
+        {
+            SerializeToFile(PathUtil.Combine(caminho, CAMINHO_FILIAIS), Filiais);
+        }
+
+        public void SalvarInventarios(string caminho)
+        {
+            SerializeToFile(PathUtil.Combine(caminho, CAMINHO_INVENTARIO), Inventarios);           
+        }
+
+        public void SalvarParametros(string caminho)
+        {
+            SerializeToFile(PathUtil.Combine(caminho, CAMINHO_PARAMETROS), ParametrosDeInicializacao);
+        }
+
+        public void SalvarProdutos(string caminho)
+        {
+            SerializeToFile(PathUtil.Combine(caminho, CAMINHO_PRODUTOS),Produtos);
+        }
+
+        private void SerializeToFile(string path, object content)
+        {
+            GC.Collect();
+            var jsonSerializer = new JsonSerializer();
+            var stream = File.Open(path, FileMode.Create);
+            var textWriter = new JsonTextWriter(new StreamWriter(stream)) { Formatting = Formatting.Indented };
+            jsonSerializer.Serialize(textWriter,content);
+            textWriter.Flush();
+            stream.Flush();
+            stream.Dispose();
+        }
+
+        private T DesserializeFromFile<T>(string path)
+        {
+            GC.Collect();
+            var stream = File.Open(path, FileMode.OpenOrCreate);
+            var objects = new StreamReader(stream).ReadToEnd();
+            var result = JsonConvert.DeserializeObject<T>(objects);
+            stream.Flush();
+            stream.Dispose();
+            return result;
+        }
+       
 
         public void SalvarTudo(string caminho)
         {
-            Inicialize();
-            var serializer = new JsonSerializer();
-            var stream = File.Open(Path.Combine(caminho, CAMINHO_INVENTARIO), FileMode.OpenOrCreate);
-            var textWriter = new JsonTextWriter(new StreamWriter(stream)) { Formatting = Formatting.Indented };
-            serializer.Serialize(textWriter, Inventarios);
-            textWriter.Flush();
-            stream.Flush();
-            stream.Dispose();
-            stream = File.Open(Path.Combine(caminho, CAMINHO_OPERADORES), FileMode.OpenOrCreate);
-            textWriter = new JsonTextWriter(new StreamWriter(stream));
-            serializer.Serialize(textWriter, Operadores);
-            textWriter.Flush();
-            stream.Flush();
-            stream.Dispose();
-            stream = File.Open(Path.Combine(caminho, CAMINHO_FILIAIS), FileMode.OpenOrCreate);
-            textWriter = new JsonTextWriter(new StreamWriter(stream));
-            serializer.Serialize(textWriter, Filiais);
-            textWriter.Flush();
-            stream.Flush();
-            stream.Dispose();
-            stream = File.Open(Path.Combine(caminho, CAMINHO_PRODUTOS), FileMode.OpenOrCreate);
-            textWriter = new JsonTextWriter(new StreamWriter(stream));
-            serializer.Serialize(textWriter, Produtos);
-            textWriter.Flush();
-            stream.Flush();
-            stream.Dispose();
+            SalvarProdutos(caminho);
+            SalvarFiliais(caminho);
+            SalvarInventarios(caminho);
+            SalvarOperadores(caminho);
+            SalvarParametros(caminho);
         }
-
-
 
         public void LimparBase(string filepath)
         {
-            var filialsPath = Path.Combine(filepath, CAMINHO_FILIAIS);
+            var filialsPath = PathUtil.Combine(filepath, CAMINHO_FILIAIS);
             if (File.Exists(filialsPath))
             {
                 File.Delete(filialsPath);
             }
-            var operadoresPath = Path.Combine(filepath, CAMINHO_OPERADORES);
+            var operadoresPath = PathUtil.Combine(filepath, CAMINHO_OPERADORES);
             if (File.Exists(operadoresPath))
             {
                 File.Delete(operadoresPath);
             }
-            var inventariosPath = Path.Combine(filepath, CAMINHO_INVENTARIO);
+            var inventariosPath = PathUtil.Combine(filepath, CAMINHO_INVENTARIO);
             if (File.Exists(inventariosPath))
             {
                 File.Delete(inventariosPath);
             }
-            var produtosPath = Path.Combine(filepath, CAMINHO_PRODUTOS);
+            var produtosPath = PathUtil.Combine(filepath, CAMINHO_PRODUTOS);
             if (File.Exists(produtosPath))
             {
                 File.Delete(produtosPath);
             }
         }
 
-        private void Inicialize()
-        {
-            if (Inventarios == null)
-            {
-                Inventarios = new Colecao<Inventario>();
-            }
-            if (Operadores == null)
-            {
-                Operadores = new Colecao<Operador>();
-            }
-            if (Filiais == null)
-            {
-                Filiais = new Colecao<Filial>();
-            }
-            if (Produtos == null)
-            {
-                Produtos = new Colecao<Produto>();
-            }
-            ParametrosDeInicializacao = new ParametrosDeInicializacao()
-            {
-                LeituraLocalAposCadaItem = false,
-                TipoLeitura = TipoLeitura.Multipla
-            };
-            _inicializado = true;
-        }
 
         public void ImportarDados(bool importarInventarios, bool importarOperadores, bool importarFiliais, bool importarProdutos)
         {
@@ -141,42 +158,38 @@ namespace Sirius.Coletor.Dados
                 if (importarInventarios)
                 {
                     var inventariosPendentes = service.ListarInventariosPendentes();
-                    this.Inventarios = JsonConvert.DeserializeObject<Colecao<Inventario>>(inventariosPendentes);
+                    var inventarionsNovos = JsonConvert.DeserializeObject<Colecao<Inventario>>(inventariosPendentes);
+                    Inventarios.ForEach(invAtual => inventarionsNovos.RemoveAll(invNovo => invNovo.Codigo == invAtual.Codigo));
+                    Inventarios.AddRange(inventarionsNovos);
                 }
                 if (importarOperadores)
                 {
                     var operadores = service.ListarOperadoresColetor();
                     if (!string.IsNullOrEmpty(operadores))
                     {
-                        this.Operadores = JsonConvert.DeserializeObject<Colecao<Operador>>(operadores);
+                        Operadores = JsonConvert.DeserializeObject<Colecao<Operador>>(operadores);
                     }
                 }
                 if (importarFiliais)
                 {
                     var filiais = service.ListarFiliais();
-                    this.Filiais = JsonConvert.DeserializeObject<Colecao<Filial>>(filiais);
+                    Filiais = JsonConvert.DeserializeObject<Colecao<Filial>>(filiais);
                 }
                 if (importarProdutos)
                 {
                     int totalProdutos;
                     bool specified;
                     service.RetornaQuantidadeProdutoCadastrados(out totalProdutos, out specified);
-                    this.Produtos = new Colecao<Produto>();
+                    Produtos = new Colecao<Produto>();
                     for (int i = 0; i < (totalProdutos / BATCH_SIZE) + 1; i++)
                     {
                         var produtos = service.ListarProdutos(i, true, BATCH_SIZE, true);
-                        this.Produtos.AddRange(JsonConvert.DeserializeObject<Colecao<Produto>>(produtos));
+                        Produtos.AddRange(JsonConvert.DeserializeObject<Colecao<Produto>>(produtos));
                         GC.Collect();
                     }
                 }
             }
         }
-    }
-
-    public class ParametrosDeInicializacao
-    {
-        public TipoLeitura TipoLeitura { get; set; }
-        public bool LeituraLocalAposCadaItem { get; set; }
     }
 
     public class Colecao<T> : List<T>

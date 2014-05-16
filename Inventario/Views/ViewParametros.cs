@@ -16,9 +16,11 @@ namespace Sirius.Coletor.Views
         {
             _formAntigo = formAntigo;
             InitializeComponent();
+            tbCaminhoDados.Text = Program.Caminho;
+            tbCodigoDispositivo.Text = DeviceId.GetDeviceID();
+            cbContagemNaoCadastrado.Checked = Program.Banco.ParametrosDeInicializacao.LeituraDeProdutoNaoCadastrado;
+            cbQuantidade.Checked = Program.Banco.ParametrosDeInicializacao.TipoLeitura != TipoLeitura.Unica;
         }
-
-  
 
         private void btnVoltar_Click(object sender, System.EventArgs e)
         {
@@ -26,19 +28,14 @@ namespace Sirius.Coletor.Views
             Close();
         }
 
-        private void btnGerarDadosDemo_Click(object sender, System.EventArgs e)
+        private void btnSalvar_Click(object sender, EventArgs e)
         {
-            DadosDeDemonstracao();
-        }
-
-        private void DadosDeDemonstracao()
-        {
-            Demonstracao.PreencheDadosDemonstracao();
-        }
-
-        private void btnImportarDados_Click(object sender, EventArgs e)
-        {
-            Program.Banco.ImportarDados(true, true, true, true);
+            var parametros = Program.Banco.ParametrosDeInicializacao;
+            parametros.LeituraDeProdutoNaoCadastrado = cbContagemNaoCadastrado.Checked;
+            parametros.LeituraLocalAposCadaItem = cbUmaLeituraPorLocalizacao.Checked;
+            parametros.TipoLeitura = cbQuantidade.Checked ? TipoLeitura.Multipla : TipoLeitura.Unica;
+            Program.Banco.ParametrosDeInicializacao = parametros;
+            Program.Banco.SalvarParametros(Program.Caminho);
         }
     }
 }

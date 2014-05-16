@@ -2,7 +2,7 @@
   <PropertyGroup>
     <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
     <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
-    <ProductVersion>9.0.30729</ProductVersion>
+    <ProductVersion>9.0.21022</ProductVersion>
     <SchemaVersion>2.0</SchemaVersion>
     <ProjectGuid>{67ABF1C1-BF51-4382-8DA3-A5B69492A518}</ProjectGuid>
     <OutputType>WinExe</OutputType>
@@ -79,6 +79,8 @@
     <Compile Include="Base\TipoLeitura.cs" />
     <Compile Include="Base\TipoUsuario.cs" />
     <Compile Include="Dados\Banco.cs" />
+    <Compile Include="Dados\ParametrosDeInicializacao.cs" />
+    <Compile Include="Dados\PathUtil.cs" />
     <Compile Include="Engine\LeituraEngine.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
@@ -87,8 +89,16 @@
       <LastGenOutput>Resources.Designer.cs</LastGenOutput>
       <SubType>Designer</SubType>
     </EmbeddedResource>
-    <EmbeddedResource Include="Views\ViewEnviarInventario.resx">
-      <DependentUpon>ViewEnviarInventario.cs</DependentUpon>
+    <EmbeddedResource Include="Views\ViewMetricas.resx">
+      <DependentUpon>ViewMetricas.cs</DependentUpon>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Views\ViewEntrada.resx">
+      <DependentUpon>ViewEntrada.cs</DependentUpon>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Views\ViewImportacao.resx">
+      <DependentUpon>ViewImportacao.cs</DependentUpon>
       <SubType>Designer</SubType>
     </EmbeddedResource>
     <EmbeddedResource Include="Views\ViewFinalLocalizacao.resx">
@@ -115,10 +125,6 @@
       <DependentUpon>ViewParametros.cs</DependentUpon>
       <SubType>Designer</SubType>
     </EmbeddedResource>
-    <EmbeddedResource Include="Views\ViewEntrada.resx">
-      <DependentUpon>ViewEntrada.cs</DependentUpon>
-      <SubType>Designer</SubType>
-    </EmbeddedResource>
     <EmbeddedResource Include="Views\ViewLogin.resx">
       <DependentUpon>ViewLogin.cs</DependentUpon>
       <SubType>Designer</SubType>
@@ -130,11 +136,24 @@
     </Compile>
     <Compile Include="Base\Extensions\ProdutosHelper.cs" />
     <Compile Include="Util\Demonstracao.cs" />
-    <Compile Include="Views\ViewEnviarInventario.cs">
+    <Compile Include="Util\DeviceId.cs" />
+    <Compile Include="Views\ViewMetricas.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="Views\ViewEnviarInventario.Designer.cs">
-      <DependentUpon>ViewEnviarInventario.cs</DependentUpon>
+    <Compile Include="Views\ViewMetricas.Designer.cs">
+      <DependentUpon>ViewMetricas.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Views\ViewEntrada.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Views\ViewEntrada.Designer.cs">
+      <DependentUpon>ViewEntrada.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Views\ViewImportacao.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Views\ViewImportacao.Designer.cs">
+      <DependentUpon>ViewImportacao.cs</DependentUpon>
     </Compile>
     <Compile Include="Views\ViewFinalLocalizacao.cs">
       <SubType>Form</SubType>
@@ -172,12 +191,6 @@
     <Compile Include="Views\ViewParametros.Designer.cs">
       <DependentUpon>ViewParametros.cs</DependentUpon>
     </Compile>
-    <Compile Include="Views\ViewEntrada.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="Views\ViewEntrada.Designer.cs">
-      <DependentUpon>ViewEntrada.cs</DependentUpon>
-    </Compile>
     <Compile Include="Views\ViewLogin.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -196,7 +209,6 @@
     <None Include="Web References\SiriusService\SiriusService.disco" />
   </ItemGroup>
   <ItemGroup>
-    <None Include="Properties\DataSources\Sirius.Coletor.Base.Leitura.datasource" />
     <None Include="Web References\SiriusService\Reference.map">
       <Generator>MSDiscoCodeGenerator</Generator>
       <LastGenOutput>Reference.cs</LastGenOutput>
@@ -225,6 +237,7 @@
   </ItemGroup>
   <ItemGroup>
     <Folder Include="Models\" />
+    <Folder Include="Properties\DataSources\" />
   </ItemGroup>
   <Import Project="$(MSBuildBinPath)\Microsoft.CompactFramework.CSharp.targets" />
   <ProjectExtensions>

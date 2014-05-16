@@ -1,4 +1,5 @@
 ﻿using System.Windows.Forms;
+using Sirius.Coletor.Base;
 
 namespace Sirius.Coletor.Views
 {
@@ -10,12 +11,7 @@ namespace Sirius.Coletor.Views
         {
             _formAntigo = formAntigo;
             InitializeComponent();
-        }
-
-        private void btnInventario_Click(object sender, System.EventArgs e)
-        {
-            var inventario = new ViewInventario(this);
-            inventario.Show();
+            btnParametros.Visible = Program.Operador.TipoUsuario == TipoUsuario.Administrador;
         }
 
         private void btnVoltar_Click(object sender, System.EventArgs e)
@@ -30,10 +26,22 @@ namespace Sirius.Coletor.Views
             parametros.Show();
         }
 
-        private void btnEnviarInventario_Click(object sender, System.EventArgs e)
+        private void btnInventario_Click(object sender, System.EventArgs e)
         {
-            var inventario = new ViewEnviarInventario(this);
+            var inventario = new ViewInventario(this);
             inventario.Show();
+        }
+
+        private void btnImportacao_Click(object sender, System.EventArgs e)
+        {
+            var importacao = new ViewImportacao(this);
+            importacao.Show();
+        }
+
+        private void btnMetricas_Click(object sender, System.EventArgs e)
+        {
+            var metricas = new ViewMetricas(this);
+            metricas.Show();
         }
     }
 }

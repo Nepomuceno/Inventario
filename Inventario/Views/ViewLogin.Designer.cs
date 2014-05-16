@@ -87,7 +87,7 @@
             this.lblVersao.ForeColor = System.Drawing.SystemColors.ActiveBorder;
             this.lblVersao.Location = new System.Drawing.Point(0, 131);
             this.lblVersao.Name = "lblVersao";
-            this.lblVersao.Size = new System.Drawing.Size(100, 20);
+            this.lblVersao.Size = new System.Drawing.Size(237, 20);
             this.lblVersao.Text = "Versão: ";
             // 
             // FrmLogin
@@ -95,7 +95,7 @@
             this.AutoScaleDimensions = new System.Drawing.SizeF(96F, 96F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Dpi;
             this.AutoScroll = true;
-            this.ClientSize = new System.Drawing.Size(257, 285);
+            this.ClientSize = new System.Drawing.Size(240, 188);
             this.Controls.Add(this.lblVersao);
             this.Controls.Add(this.tbSenha);
             this.Controls.Add(this.lblSenha);

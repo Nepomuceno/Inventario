@@ -61,39 +61,41 @@
             // 
             // lblProduto
             // 
-            this.lblProduto.Location = new System.Drawing.Point(4, 86);
+            this.lblProduto.Location = new System.Drawing.Point(4, 78);
             this.lblProduto.Name = "lblProduto";
-            this.lblProduto.Size = new System.Drawing.Size(128, 20);
+            this.lblProduto.Size = new System.Drawing.Size(53, 20);
             this.lblProduto.Text = "Produto";
             // 
             // tbProduto
             // 
-            this.tbProduto.Location = new System.Drawing.Point(63, 86);
+            this.tbProduto.Location = new System.Drawing.Point(63, 77);
             this.tbProduto.Name = "tbProduto";
             this.tbProduto.Size = new System.Drawing.Size(163, 21);
             this.tbProduto.TabIndex = 8;
+            this.tbProduto.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.tbProduto_KeyPress);
             // 
             // tbQuantidade
             // 
-            this.tbQuantidade.Location = new System.Drawing.Point(94, 177);
+            this.tbQuantidade.Location = new System.Drawing.Point(94, 172);
             this.tbQuantidade.Name = "tbQuantidade";
             this.tbQuantidade.Size = new System.Drawing.Size(132, 21);
             this.tbQuantidade.TabIndex = 10;
             this.tbQuantidade.TextChanged += new System.EventHandler(this.tbQuantidade_TextChanged);
+            this.tbQuantidade.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.tbQuantidade_KeyPress);
             // 
             // lblQuantidade
             // 
-            this.lblQuantidade.Location = new System.Drawing.Point(4, 177);
+            this.lblQuantidade.Location = new System.Drawing.Point(4, 172);
             this.lblQuantidade.Name = "lblQuantidade";
             this.lblQuantidade.Size = new System.Drawing.Size(84, 20);
             this.lblQuantidade.Text = "Quantidade:";
             // 
             // lblProdutoDescricao
             // 
-            this.lblProdutoDescricao.BackColor = System.Drawing.Color.Gainsboro;
-            this.lblProdutoDescricao.Location = new System.Drawing.Point(4, 121);
+            this.lblProdutoDescricao.BackColor = System.Drawing.Color.WhiteSmoke;
+            this.lblProdutoDescricao.Location = new System.Drawing.Point(4, 102);
             this.lblProdutoDescricao.Name = "lblProdutoDescricao";
-            this.lblProdutoDescricao.Size = new System.Drawing.Size(222, 47);
+            this.lblProdutoDescricao.Size = new System.Drawing.Size(222, 67);
             // 
             // lblOperador
             // 
@@ -135,7 +137,7 @@
             this.AutoScaleDimensions = new System.Drawing.SizeF(96F, 96F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Dpi;
             this.AutoScroll = true;
-            this.ClientSize = new System.Drawing.Size(240, 268);
+            this.ClientSize = new System.Drawing.Size(257, 205);
             this.Controls.Add(this.lblLocalizacao);
             this.Controls.Add(this.lblDeposito);
             this.Controls.Add(this.lblInventario);
