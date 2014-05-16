@@ -61,14 +61,14 @@
             // 
             // lblProduto
             // 
-            this.lblProduto.Location = new System.Drawing.Point(4, 78);
+            this.lblProduto.Location = new System.Drawing.Point(4, 73);
             this.lblProduto.Name = "lblProduto";
             this.lblProduto.Size = new System.Drawing.Size(53, 20);
             this.lblProduto.Text = "Produto";
             // 
             // tbProduto
             // 
-            this.tbProduto.Location = new System.Drawing.Point(63, 77);
+            this.tbProduto.Location = new System.Drawing.Point(63, 72);
             this.tbProduto.Name = "tbProduto";
             this.tbProduto.Size = new System.Drawing.Size(163, 21);
             this.tbProduto.TabIndex = 8;
@@ -76,7 +76,7 @@
             // 
             // tbQuantidade
             // 
-            this.tbQuantidade.Location = new System.Drawing.Point(94, 172);
+            this.tbQuantidade.Location = new System.Drawing.Point(94, 151);
             this.tbQuantidade.Name = "tbQuantidade";
             this.tbQuantidade.Size = new System.Drawing.Size(132, 21);
             this.tbQuantidade.TabIndex = 10;
@@ -85,7 +85,7 @@
             // 
             // lblQuantidade
             // 
-            this.lblQuantidade.Location = new System.Drawing.Point(4, 172);
+            this.lblQuantidade.Location = new System.Drawing.Point(4, 151);
             this.lblQuantidade.Name = "lblQuantidade";
             this.lblQuantidade.Size = new System.Drawing.Size(84, 20);
             this.lblQuantidade.Text = "Quantidade:";
@@ -93,9 +93,9 @@
             // lblProdutoDescricao
             // 
             this.lblProdutoDescricao.BackColor = System.Drawing.Color.WhiteSmoke;
-            this.lblProdutoDescricao.Location = new System.Drawing.Point(4, 102);
+            this.lblProdutoDescricao.Location = new System.Drawing.Point(4, 97);
             this.lblProdutoDescricao.Name = "lblProdutoDescricao";
-            this.lblProdutoDescricao.Size = new System.Drawing.Size(222, 67);
+            this.lblProdutoDescricao.Size = new System.Drawing.Size(222, 50);
             // 
             // lblOperador
             // 

@@ -14,7 +14,8 @@ namespace Sirius.Coletor
     static class Program
     {
         private static string _caminho = null;
-        public static string Caminho {
+        public static string Caminho
+        {
             get
             {
                 if (string.IsNullOrEmpty(_caminho))
@@ -26,7 +27,7 @@ namespace Sirius.Coletor
                     }
                 }
                 return _caminho;
-            } 
+            }
         }
         public static Operador Operador { get; set; }
         public static Banco Banco { get; private set; }
@@ -56,13 +57,14 @@ namespace Sirius.Coletor
         {
             var stream = File.Open(PathUtil.Combine(Caminho, "\\logcrash.json"), FileMode.OpenOrCreate);
             var textWriter = new JsonTextWriter(new StreamWriter(stream));
-            textWriter.WriteRaw(JsonConvert.SerializeObject(e,Formatting.Indented));
+            textWriter.WriteRaw(JsonConvert.SerializeObject(e, Formatting.Indented));
             textWriter.Flush();
             stream.Flush();
             stream.Dispose();
         }
         static void CarregarBase()
         {
+            Program.StartWaiting(new Form());
             Banco.Carregar(Caminho);
             if (!Banco.Operadores.Any())
             {
@@ -74,7 +76,8 @@ namespace Sirius.Coletor
                     TipoUsuario = TipoUsuario.Administrador
                 });
             }
+            Program.StopWaiting(new Form());
         }
-        
+
     }
 }

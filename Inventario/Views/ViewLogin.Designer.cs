@@ -51,6 +51,7 @@
             this.tbUsuario.Name = "tbUsuario";
             this.tbUsuario.Size = new System.Drawing.Size(234, 21);
             this.tbUsuario.TabIndex = 1;
+            this.tbUsuario.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.tbUsuario_KeyPress);
             // 
             // lblSenha
             // 
@@ -66,6 +67,7 @@
             this.tbSenha.PasswordChar = '*';
             this.tbSenha.Size = new System.Drawing.Size(234, 21);
             this.tbSenha.TabIndex = 4;
+            this.tbSenha.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.tbSenha_KeyPress);
             // 
             // mainMenu1
             // 

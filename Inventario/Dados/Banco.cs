@@ -108,11 +108,10 @@ namespace Sirius.Coletor.Dados
         private T DesserializeFromFile<T>(string path)
         {
             GC.Collect();
-            var stream = File.Open(path, FileMode.OpenOrCreate);
-            var objects = new StreamReader(stream).ReadToEnd();
-            var result = JsonConvert.DeserializeObject<T>(objects);
-            stream.Flush();
-            stream.Dispose();
+            var jsonSerializer = new JsonSerializer();
+            var stream = new JsonTextReader(new StreamReader(File.Open(path, FileMode.OpenOrCreate)));
+            var result = jsonSerializer.Deserialize<T>(stream);
+            stream.Close();
             return result;
         }
        

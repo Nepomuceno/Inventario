@@ -27,23 +27,45 @@ namespace Sirius.Coletor.Views
 
         private void btnEntrar_Click(object sender, EventArgs e)
         {
+            LoginUsuario();
+        }
+
+        private void LoginUsuario()
+        {
             var operador = Program.Banco.Operadores.FirstOrDefault(
-                    o => (o.Nome.Equals(tbUsuario.Text, StringComparison.InvariantCultureIgnoreCase) ||
-                     o.Codigo.ToString(CultureInfo.InvariantCulture).Equals(tbUsuario.Text,StringComparison.InvariantCultureIgnoreCase)) 
-                     && o.Senha.Equals(tbSenha.Text,StringComparison.InvariantCultureIgnoreCase));
+                o => (o.Nome.Equals(tbUsuario.Text, StringComparison.InvariantCultureIgnoreCase) ||
+                      o.Codigo.ToString(CultureInfo.InvariantCulture)
+                          .Equals(tbUsuario.Text, StringComparison.InvariantCultureIgnoreCase))
+                     && o.Senha.Equals(tbSenha.Text, StringComparison.InvariantCultureIgnoreCase));
 
             if (operador != null)
             {
                 Program.Operador = operador;
                 var entrada = new ViewEntrada(this);
-                entrada.Show();    
+                entrada.Show();
             }
             else
             {
                 MessageBox.Show("Usuario ou senha invalidos");
             }
-            
-            
+        }
+
+        private void tbUsuario_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            if (e.KeyChar == (char)Keys.Return)
+            {
+                e.Handled = true;
+                LoginUsuario();
+            }
+        }
+
+        private void tbSenha_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            if (e.KeyChar == (char)Keys.Return)
+            {
+                e.Handled = true;
+                LoginUsuario();
+            }
         }
 
 

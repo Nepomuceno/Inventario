@@ -58,7 +58,7 @@ namespace Sirius.Coletor.Views
 
         private void BuscaProduto(string readertext)
         {
-            var produto = Program.Banco.Produtos.FirstOrDefault(p => p.EANS.Any(e => e == readertext));
+            var produto = Program.Banco.Produtos.FirstOrDefault(p => p.EANS.Any(e => e == readertext) || p.Codigo.ToString() == readertext);
             if (produto == null)
             {
                 MessageBox.Show("Este produto não foi encontrado.");
