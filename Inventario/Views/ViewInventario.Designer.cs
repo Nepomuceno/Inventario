@@ -32,12 +32,14 @@
             this.mainMenu1 = new System.Windows.Forms.MainMenu();
             this.btnVoltar = new System.Windows.Forms.MenuItem();
             this.btnContinuar = new System.Windows.Forms.MenuItem();
+            this.btnExecutar = new System.Windows.Forms.MenuItem();
             this.btnEnviar = new System.Windows.Forms.MenuItem();
             this.btnFinalizar = new System.Windows.Forms.MenuItem();
             this.lblOperador = new System.Windows.Forms.Label();
             this.lblDeposito = new System.Windows.Forms.Label();
             this.cbInventarios = new System.Windows.Forms.ComboBox();
-            this.btnExecutar = new System.Windows.Forms.MenuItem();
+            this.btnExcluir = new System.Windows.Forms.MenuItem();
+            this.btnExcluirTodos = new System.Windows.Forms.Button();
             this.SuspendLayout();
             // 
             // mainMenu1
@@ -55,8 +57,14 @@
             this.btnContinuar.MenuItems.Add(this.btnExecutar);
             this.btnContinuar.MenuItems.Add(this.btnEnviar);
             this.btnContinuar.MenuItems.Add(this.btnFinalizar);
+            this.btnContinuar.MenuItems.Add(this.btnExcluir);
             this.btnContinuar.Text = "Continuar";
             this.btnContinuar.Click += new System.EventHandler(this.btnExecutar_Click);
+            // 
+            // btnExecutar
+            // 
+            this.btnExecutar.Text = "Executar";
+            this.btnExecutar.Click += new System.EventHandler(this.btnExecutar_Click);
             // 
             // btnEnviar
             // 
@@ -73,7 +81,7 @@
             this.lblOperador.Location = new System.Drawing.Point(4, 4);
             this.lblOperador.Name = "lblOperador";
             this.lblOperador.Size = new System.Drawing.Size(233, 22);
-            this.lblOperador.Text = "Operador";
+            this.lblOperador.Text = "Operador: ";
             // 
             // lblDeposito
             // 
@@ -89,10 +97,19 @@
             this.cbInventarios.Size = new System.Drawing.Size(233, 22);
             this.cbInventarios.TabIndex = 6;
             // 
-            // btnExecutar
+            // btnExcluir
             // 
-            this.btnExecutar.Text = "Executar";
-            this.btnExecutar.Click += new System.EventHandler(this.btnExecutar_Click);
+            this.btnExcluir.Text = "Excluir";
+            this.btnExcluir.Click += new System.EventHandler(this.btnExcluir_Click);
+            // 
+            // btnExcluirTodos
+            // 
+            this.btnExcluirTodos.Location = new System.Drawing.Point(34, 165);
+            this.btnExcluirTodos.Name = "btnExcluirTodos";
+            this.btnExcluirTodos.Size = new System.Drawing.Size(176, 20);
+            this.btnExcluirTodos.TabIndex = 8;
+            this.btnExcluirTodos.Text = "Excluir todos os inventarios";
+            this.btnExcluirTodos.Click += new System.EventHandler(this.btnExcluirTodos_Click);
             // 
             // ViewInventario
             // 
@@ -100,6 +117,7 @@
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Dpi;
             this.AutoScroll = true;
             this.ClientSize = new System.Drawing.Size(240, 188);
+            this.Controls.Add(this.btnExcluirTodos);
             this.Controls.Add(this.lblDeposito);
             this.Controls.Add(this.cbInventarios);
             this.Controls.Add(this.lblOperador);
@@ -121,5 +139,7 @@
         private System.Windows.Forms.MenuItem btnEnviar;
         private System.Windows.Forms.MenuItem btnFinalizar;
         private System.Windows.Forms.MenuItem btnExecutar;
+        private System.Windows.Forms.MenuItem btnExcluir;
+        private System.Windows.Forms.Button btnExcluirTodos;
     }
 }

@@ -1,6 +1,8 @@
 ﻿using System.Collections.Generic;
 using System.ComponentModel;
 using System.Linq;
+using System.Media;
+using System.Text.RegularExpressions;
 using System.Windows.Forms;
 using Sirius.Coletor.Base;
 using Sirius.Coletor.Dados;
@@ -15,6 +17,7 @@ namespace Sirius.Coletor.Views
         private readonly Inventario _inventarioCorrente;
         private readonly Deposito _deposito;
         private BarcodeReader _reader;
+        private static readonly Regex DigitsOnly = new Regex(@"[^\d]");
 
         public ViewLocal(Form formAntigo, Inventario inventarioCorrente, Deposito deposito)
         {
@@ -22,8 +25,6 @@ namespace Sirius.Coletor.Views
             _inventarioCorrente = inventarioCorrente;
             _deposito = deposito;
             InitializeComponent();
-            cbLocalizacoes.DisplayMember = "Nome";
-            cbLocalizacoes.DataSource = deposito.Localizacoes;
             InicializaLabels();
             InicializarLeitor();
         }
@@ -37,10 +38,23 @@ namespace Sirius.Coletor.Views
 
         private void btnConfirmar_Click(object sender, EventArgs e)
         {
-            var leituras = new ViewLeitura(this, _inventarioCorrente, cbLocalizacoes.SelectedItem as Localizacao, _deposito);
-            _reader.Dispose();
-            _reader = null;
-            leituras.Show();
+            ValidaLocalizacao(tbLocalizacao.Text);
+        }
+
+        private void ValidaLocalizacao(string text)
+        {
+            var localizacao = _deposito.Localizacoes.FirstOrDefault(l => l.Codigo == int.Parse(text));
+            if (localizacao != null)
+            {
+                _reader.Dispose();
+                var leituras = new ViewLeitura(this, _inventarioCorrente, localizacao, _deposito);
+                SystemSounds.Beep.Play();
+                leituras.Show();
+            }
+            else
+            {
+                MessageBox.Show("Não foi possivel localizar essa localização");
+            }
         }
 
         protected override void OnGotFocus(EventArgs e)
@@ -83,19 +97,7 @@ namespace Sirius.Coletor.Views
                     var readertext = ((BarcodeReader)sender).ReaderData.Text;
                     try
                     {
-                        var localizacao = _deposito.Localizacoes.FirstOrDefault(l => l.Codigo == int.Parse(readertext));
-                        if (localizacao != null)
-                        {
-                            _reader.Dispose();
-                            var leituras = new ViewLeitura(this, _inventarioCorrente,
-                                cbLocalizacoes.SelectedItem as Localizacao, _deposito);
-                            leituras.Show();
-                        }
-                        else
-                        {
-                            MessageBox.Show("Não foi possivel localizar essa localização");
-                        }
-                        
+                        ValidaLocalizacao(readertext);
                     }
                     catch
                     {
@@ -104,6 +106,20 @@ namespace Sirius.Coletor.Views
                     
                 }
             };
+        }
+
+        private void tbLocalizacao_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            if (e.KeyChar == (char)Keys.Return)
+            {
+                e.Handled = true;
+                ValidaLocalizacao(tbLocalizacao.Text);
+            }
+        }
+
+        private void tbLocalizacao_TextChanged(object sender, EventArgs e)
+        {
+            tbLocalizacao.Text = DigitsOnly.Replace(tbLocalizacao.Text, "");
         }
 
     }

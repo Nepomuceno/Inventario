@@ -2,6 +2,7 @@
 using System.ComponentModel;
 using System.Globalization;
 using System.Linq;
+using System.Media;
 using System.Reflection;
 using System.Windows.Forms;
 using Sirius.Coletor.Dados;
@@ -37,12 +38,12 @@ namespace Sirius.Coletor.Views
                       o.Codigo.ToString(CultureInfo.InvariantCulture)
                           .Equals(tbUsuario.Text, StringComparison.InvariantCultureIgnoreCase))
                      && o.Senha.Equals(tbSenha.Text, StringComparison.InvariantCultureIgnoreCase));
-
+            SystemSounds.Beep.Play();
             if (operador != null)
             {
                 Program.Operador = operador;
                 var entrada = new ViewEntrada(this);
-                entrada.Show();
+                entrada.ShowDialog();
             }
             else
             {

@@ -28,6 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(FrmLogin));
             this.lblUsuario = new System.Windows.Forms.Label();
             this.tbUsuario = new System.Windows.Forms.TextBox();
             this.lblSenha = new System.Windows.Forms.Label();
@@ -36,18 +37,19 @@
             this.btnSair = new System.Windows.Forms.MenuItem();
             this.btnEntrar = new System.Windows.Forms.MenuItem();
             this.lblVersao = new System.Windows.Forms.Label();
+            this.pictureBox1 = new System.Windows.Forms.PictureBox();
             this.SuspendLayout();
             // 
             // lblUsuario
             // 
-            this.lblUsuario.Location = new System.Drawing.Point(3, 16);
+            this.lblUsuario.Location = new System.Drawing.Point(0, 39);
             this.lblUsuario.Name = "lblUsuario";
             this.lblUsuario.Size = new System.Drawing.Size(52, 20);
             this.lblUsuario.Text = "Usuario";
             // 
             // tbUsuario
             // 
-            this.tbUsuario.Location = new System.Drawing.Point(3, 40);
+            this.tbUsuario.Location = new System.Drawing.Point(0, 57);
             this.tbUsuario.Name = "tbUsuario";
             this.tbUsuario.Size = new System.Drawing.Size(234, 21);
             this.tbUsuario.TabIndex = 1;
@@ -55,14 +57,14 @@
             // 
             // lblSenha
             // 
-            this.lblSenha.Location = new System.Drawing.Point(3, 68);
+            this.lblSenha.Location = new System.Drawing.Point(0, 80);
             this.lblSenha.Name = "lblSenha";
             this.lblSenha.Size = new System.Drawing.Size(100, 20);
             this.lblSenha.Text = "Senha";
             // 
             // tbSenha
             // 
-            this.tbSenha.Location = new System.Drawing.Point(3, 91);
+            this.tbSenha.Location = new System.Drawing.Point(0, 98);
             this.tbSenha.Name = "tbSenha";
             this.tbSenha.PasswordChar = '*';
             this.tbSenha.Size = new System.Drawing.Size(234, 21);
@@ -87,10 +89,18 @@
             // lblVersao
             // 
             this.lblVersao.ForeColor = System.Drawing.SystemColors.ActiveBorder;
-            this.lblVersao.Location = new System.Drawing.Point(0, 131);
+            this.lblVersao.Location = new System.Drawing.Point(0, 124);
             this.lblVersao.Name = "lblVersao";
             this.lblVersao.Size = new System.Drawing.Size(237, 20);
             this.lblVersao.Text = "Versão: ";
+            // 
+            // pictureBox1
+            // 
+            this.pictureBox1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(64)))));
+            this.pictureBox1.Image = ((System.Drawing.Image)(resources.GetObject("pictureBox1.Image")));
+            this.pictureBox1.Location = new System.Drawing.Point(0, 0);
+            this.pictureBox1.Name = "pictureBox1";
+            this.pictureBox1.Size = new System.Drawing.Size(240, 36);
             // 
             // FrmLogin
             // 
@@ -98,6 +108,7 @@
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Dpi;
             this.AutoScroll = true;
             this.ClientSize = new System.Drawing.Size(240, 188);
+            this.Controls.Add(this.pictureBox1);
             this.Controls.Add(this.lblVersao);
             this.Controls.Add(this.tbSenha);
             this.Controls.Add(this.lblSenha);
@@ -120,6 +131,7 @@
         private System.Windows.Forms.MenuItem btnSair;
         private System.Windows.Forms.MenuItem btnEntrar;
         private System.Windows.Forms.Label lblVersao;
+        private System.Windows.Forms.PictureBox pictureBox1;
     }
 }
 

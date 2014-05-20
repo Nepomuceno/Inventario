@@ -2,6 +2,7 @@
 using System.ComponentModel;
 using System.Data;
 using System.Linq;
+using System.Media;
 using System.Text.RegularExpressions;
 using System.Windows.Forms;
 using Sirius.Coletor.Base;
@@ -58,6 +59,7 @@ namespace Sirius.Coletor.Views
             _localizacaoInventario.InformacaoAdicional = tbInfoAdicional.Text;
             _localizacaoInventario.DatFim = DateTime.Now;
             _inventario.LocalizacoesInventario.Add(_localizacaoInventario);
+            SystemSounds.Beep.Play();
             this.Close();
             _formAntigo.Show();
         }

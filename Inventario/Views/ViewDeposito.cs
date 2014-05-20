@@ -1,5 +1,6 @@
 ﻿using System.Collections.Generic;
 using System.Linq;
+using System.Media;
 using System.Windows.Forms;
 using Sirius.Coletor.Base;
 using Sirius.Coletor.Dados;
@@ -48,6 +49,7 @@ namespace Sirius.Coletor.Views
             else
             {
                 var local = new ViewLocal(this, _inventarioCorrente, cbDepositos.SelectedItem as Deposito);
+                SystemSounds.Beep.Play();
                 local.Show();
             }
         }

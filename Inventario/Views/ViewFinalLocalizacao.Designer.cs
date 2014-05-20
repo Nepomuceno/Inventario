@@ -93,17 +93,17 @@
             // 
             // lblInfoAdicional
             // 
-            this.lblInfoAdicional.Location = new System.Drawing.Point(4, 73);
+            this.lblInfoAdicional.Location = new System.Drawing.Point(4, 71);
             this.lblInfoAdicional.Name = "lblInfoAdicional";
             this.lblInfoAdicional.Size = new System.Drawing.Size(138, 20);
             this.lblInfoAdicional.Text = "Informações adicionais:";
             // 
             // tbInfoAdicional
             // 
-            this.tbInfoAdicional.Location = new System.Drawing.Point(4, 97);
+            this.tbInfoAdicional.Location = new System.Drawing.Point(4, 95);
             this.tbInfoAdicional.Multiline = true;
             this.tbInfoAdicional.Name = "tbInfoAdicional";
-            this.tbInfoAdicional.Size = new System.Drawing.Size(233, 155);
+            this.tbInfoAdicional.Size = new System.Drawing.Size(233, 79);
             this.tbInfoAdicional.TabIndex = 6;
             // 
             // ViewFinalLocalizacao

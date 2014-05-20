@@ -3,6 +3,7 @@ using System.ComponentModel;
 using System.Data;
 using System.Globalization;
 using System.Linq;
+using System.Media;
 using System.Text.RegularExpressions;
 using System.Windows.Forms;
 using Sirius.Coletor.Base;
@@ -59,6 +60,7 @@ namespace Sirius.Coletor.Views
         private void BuscaProduto(string readertext)
         {
             var produto = Program.Banco.Produtos.FirstOrDefault(p => p.EANS.Any(e => e == readertext) || p.Codigo.ToString() == readertext);
+            SystemSounds.Beep.Play();
             if (produto == null)
             {
                 MessageBox.Show("Este produto não foi encontrado.");
@@ -81,7 +83,7 @@ namespace Sirius.Coletor.Views
                         CodigoProduto = produto.Codigo,
                         DataDeLeitura = DateTime.Now,
                         Quantidade = 1,
-                        TipoLeitura = produto.TipoLeitura
+                        TipoLeitura = produto.TipoLeitura == TipoLeitura.Unica ? TipoLeitura.Unica : Program.Banco.ParametrosDeInicializacao.TipoLeitura
                     };
                     tbProduto.Text = produto.Codigo.ToString(CultureInfo.InvariantCulture);
                     tbProduto.Enabled = false;
@@ -101,6 +103,8 @@ namespace Sirius.Coletor.Views
             tbProduto.Text = string.Empty;
             tbQuantidade.Text = string.Empty;
             tbQuantidade.Enabled = false;
+            _reader.Dispose();
+            SystemSounds.Beep.Play();
             vwFinalizacao.Show();
             _reader.Dispose();
             Close();
@@ -109,6 +113,7 @@ namespace Sirius.Coletor.Views
         private void btnSalvar_Click(object sender, EventArgs e)
         {
             SalvarLeitura();
+            SystemSounds.Beep.Play();
         }
 
         protected override void OnClosing(CancelEventArgs e)
@@ -128,7 +133,7 @@ namespace Sirius.Coletor.Views
 
             _leitura.Quantidade = int.Parse(tbQuantidade.Text);
             tbProduto.Text = string.Empty;
-            lblProduto.Text = string.Empty;
+            tbProduto.Enabled = true;
             tbQuantidade.Text = string.Empty;
             tbQuantidade.Enabled = false;
             lblProdutoDescricao.Text = string.Empty;
