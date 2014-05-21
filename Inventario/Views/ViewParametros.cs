@@ -1,5 +1,6 @@
 ﻿using System.Collections.Generic;
 using System.Linq;
+using System.Media;
 using System.Windows.Forms;
 using Sirius.Coletor.Base;
 using Sirius.Coletor.Dados;
@@ -19,10 +20,12 @@ namespace Sirius.Coletor.Views
             tbCaminhoDados.Text = Program.Caminho;
             tbCodigoDispositivo.Text = DeviceId.GetDeviceID();
             cbContagemNaoCadastrado.Checked = Program.Banco.ParametrosDeInicializacao.LeituraDeProdutoNaoCadastrado;
+            cbUmaLeituraPorLocalizacao.Checked = Program.Banco.ParametrosDeInicializacao.LeituraLocalAposCadaItem;
             cbQuantidade.Checked = Program.Banco.ParametrosDeInicializacao.TipoLeitura != TipoLeitura.Unica;
+            cbSalvarTrocarProduto.Checked = Program.Banco.ParametrosDeInicializacao.SalvarAoTrocarDeItem;
         }
 
-        private void btnVoltar_Click(object sender, System.EventArgs e)
+        private void btnVoltar_Click(object sender, EventArgs e)
         {
             _formAntigo.Show();
             Close();
@@ -36,6 +39,8 @@ namespace Sirius.Coletor.Views
             parametros.TipoLeitura = cbQuantidade.Checked ? TipoLeitura.Multipla : TipoLeitura.Unica;
             Program.Banco.ParametrosDeInicializacao = parametros;
             Program.Banco.SalvarParametros(Program.Caminho);
+            MessageBox.Show("Parametros salvos com sucesso");
+            SystemSounds.Beep.Play();
         }
     }
 }

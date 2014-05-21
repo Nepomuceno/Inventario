@@ -12,7 +12,9 @@ namespace Sirius.Coletor.Views
         {
             _formAntigo = formAntigo;
             InitializeComponent();
-            btnParametros.Visible = Program.Operador.TipoUsuario == TipoUsuario.Supervisor;
+            btnParametros.Visible = Program.Operador.TipoUsuario != TipoUsuario.Operador;
+            btnMetricas.Visible = Program.Operador.TipoUsuario != TipoUsuario.Operador;
+            btnImportacao.Visible = Program.Operador.TipoUsuario != TipoUsuario.Operador;
         }
 
         private void btnVoltar_Click(object sender, System.EventArgs e)

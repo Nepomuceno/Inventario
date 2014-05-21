@@ -2,7 +2,7 @@
 {
     public enum TipoUsuario
     {
-        Coletor = 1,
+        Operador = 1,
         Supervisor = 2,
         Administrador = 3
     }

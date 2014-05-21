@@ -12,5 +12,6 @@ namespace Sirius.Coletor.Base
         public DateTime DataDeLeitura { get; set; }
         public int CodigoOperador { get; set; }
         public string CodigoEquipamento { get; set; }
+        public string ValorDeLeitura { get; set; }
     }
 }

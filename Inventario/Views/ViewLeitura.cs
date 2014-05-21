@@ -10,6 +10,7 @@ using Sirius.Coletor.Base;
 using Sirius.Coletor.Base.Extensions;
 using Sirius.Coletor.Dados;
 using System;
+using Sirius.Coletor.Util;
 using Symbol.Barcode;
 
 namespace Sirius.Coletor.Views
@@ -59,7 +60,8 @@ namespace Sirius.Coletor.Views
 
         private void BuscaProduto(string readertext)
         {
-            var produto = Program.Banco.Produtos.FirstOrDefault(p => p.EANS.Any(e => e == readertext) || p.Codigo.ToString() == readertext);
+            IEnumerable<Produto> produtos = _inventario.TipoInventario == TipoInventario.Rotativo ? _inventario.ProdutosPossiveis : Program.Banco.Produtos;
+            var produto = produtos.FirstOrDefault(p => p.EANS.Any(e => e == readertext) || p.Codigo.ToString() == readertext);
             SystemSounds.Beep.Play();
             if (produto == null)
             {
@@ -67,7 +69,7 @@ namespace Sirius.Coletor.Views
             }
             else
             {
-                if (_leitura != null && _leitura.CodigoProduto == produto.Codigo)
+                if (_leitura != null && _leitura.ValorDeLeitura == readertext)
                 {
                     _leitura.DataDeLeitura = DateTime.Now;
                     var quantidade = int.Parse(tbQuantidade.Text) + 1;
@@ -76,19 +78,26 @@ namespace Sirius.Coletor.Views
                 }
                 else
                 {
+                    if (Program.Banco.ParametrosDeInicializacao.SalvarAoTrocarDeItem)
+                    {
+                        SalvarLeitura();
+                    }
                     _leitura = new Leitura()
                     {
                         CodigoLocalizacao = _localizacao == null ? 0 : _localizacao.Codigo,
                         CodigoOperador = Program.Operador.Codigo,
                         CodigoProduto = produto.Codigo,
                         DataDeLeitura = DateTime.Now,
-                        Quantidade = 1,
-                        TipoLeitura = produto.TipoLeitura == TipoLeitura.Unica ? TipoLeitura.Unica : Program.Banco.ParametrosDeInicializacao.TipoLeitura
+                        Quantidade = 0,
+                        TipoLeitura = produto.TipoLeitura == TipoLeitura.Unica ? TipoLeitura.Unica : Program.Banco.ParametrosDeInicializacao.TipoLeitura,
+                        ValorDeLeitura = readertext,
+                        CodigoEquipamento = DeviceId.GetDeviceID()
+                        
                     };
                     tbProduto.Text = produto.Codigo.ToString(CultureInfo.InvariantCulture);
                     tbProduto.Enabled = false;
                     lblProdutoDescricao.Text = produto.Descricao;
-                    tbQuantidade.Text = "1";
+                    tbQuantidade.Text = "0";
                     tbQuantidade.Enabled = _leitura.TipoLeitura != TipoLeitura.Unica;
                 }
                 tbQuantidade.Focus();

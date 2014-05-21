@@ -20,8 +20,8 @@ namespace Sirius.Coletor.Views
             cbInventarios.DisplayMember = "Nome";
             cbInventarios.DataSource = Program.Banco.Inventarios;
             lblOperador.Text += string.Format("{0} - {1}", Program.Operador.Codigo, Program.Operador.Nome);
-            btnExcluir.Enabled = Program.Operador.TipoUsuario != TipoUsuario.Coletor;
-            btnExcluirTodos.Visible = Program.Operador.TipoUsuario != TipoUsuario.Coletor;
+            btnExcluir.Enabled = Program.Operador.TipoUsuario != TipoUsuario.Operador;
+            btnExcluirTodos.Visible = Program.Operador.TipoUsuario != TipoUsuario.Operador;
         }
 
         
@@ -63,7 +63,7 @@ namespace Sirius.Coletor.Views
                 }
                 catch
                 {
-                    SystemSounds.Exclamation.Play();
+                    SystemSounds.Asterisk.Play();
                     MessageBox.Show("Não foi possivel finalizar este inventario favor entrar em contato");
                 }
                 

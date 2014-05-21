@@ -2,7 +2,8 @@
 {
     public enum TipoInventario
     {
-        Rotativo,
-        Recontagem
+        Total = 1,
+        Rotativo = 2,
+        Recontagem = 3
     }
 }

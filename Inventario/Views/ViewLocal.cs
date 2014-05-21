@@ -29,7 +29,7 @@ namespace Sirius.Coletor.Views
             InicializarLeitor();
         }
 
-        
+
         private void btnVoltar_Click(object sender, System.EventArgs e)
         {
             _formAntigo.Show();
@@ -43,18 +43,26 @@ namespace Sirius.Coletor.Views
 
         private void ValidaLocalizacao(string text)
         {
-            var localizacao = _deposito.Localizacoes.FirstOrDefault(l => l.Codigo == int.Parse(text));
-            if (localizacao != null)
+            if (!string.IsNullOrEmpty(text))
             {
-                _reader.Dispose();
-                var leituras = new ViewLeitura(this, _inventarioCorrente, localizacao, _deposito);
-                SystemSounds.Beep.Play();
-                leituras.Show();
+                var localizacao = _deposito.Localizacoes.FirstOrDefault(l => l.Codigo == int.Parse(text));
+                if (localizacao != null)
+                {
+                    _reader.Dispose();
+                    var leituras = new ViewLeitura(this, _inventarioCorrente, localizacao, _deposito);
+                    SystemSounds.Beep.Play();
+                    leituras.Show();
+                }
+                else
+                {
+                    MessageBox.Show("Não foi possivel localizar essa localização");
+                }
             }
             else
             {
-                MessageBox.Show("Não foi possivel localizar essa localização");
+                MessageBox.Show("Favor digitar um codigo.");
             }
+
         }
 
         protected override void OnGotFocus(EventArgs e)
@@ -68,10 +76,10 @@ namespace Sirius.Coletor.Views
 
         private void InicializaLabels()
         {
-            lblOperador.Text += string.Format("{0} - {1}", Program.Operador.Codigo,Program.Operador.Nome);
+            lblOperador.Text += string.Format("{0} - {1}", Program.Operador.Codigo, Program.Operador.Nome);
             lblInventario.Text += _inventarioCorrente.Codigo.ToString();
             lblContagem.Text += _inventarioCorrente.CodigoContagem.ToString();
-            lblFilial.Text += string.Format("{0}",_inventarioCorrente.Filial.Nome);
+            lblFilial.Text += string.Format("{0}", _inventarioCorrente.Filial.Nome);
             lblDeposito.Text += string.Format("{0} - {1}", _deposito.Codigo, _deposito.Nome);
 
         }
@@ -101,9 +109,9 @@ namespace Sirius.Coletor.Views
                     }
                     catch
                     {
-                        
+
                     }
-                    
+
                 }
             };
         }

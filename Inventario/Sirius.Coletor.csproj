@@ -220,10 +220,10 @@
     <WebReferences Include="Web References\" />
   </ItemGroup>
   <ItemGroup>
-    <WebReferenceUrl Include="http://192.168.1.50/Hmlog/SiriusService.svc">
+    <WebReferenceUrl Include="http://sirius/siriusservice/SiriusService.svc">
       <UrlBehavior>Static</UrlBehavior>
       <RelPath>Web References\SiriusService\</RelPath>
-      <UpdateFromURL>http://192.168.1.50/Hmlog/SiriusService.svc</UpdateFromURL>
+      <UpdateFromURL>http://sirius/siriusservice/SiriusService.svc</UpdateFromURL>
       <ServiceLocationURL>
       </ServiceLocationURL>
       <CachedDynamicPropName>

@@ -28,7 +28,7 @@ namespace Sirius.Coletor.SiriusService {
         
         /// <remarks/>
         public SiriusService() {
-            this.Url = "http://192.168.1.50/Hmlog/SiriusService.svc";
+            this.Url = "http://sirius/SiriusService/SiriusService.svc";
         }
         
         /// <remarks/>

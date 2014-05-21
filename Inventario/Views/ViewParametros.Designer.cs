@@ -39,6 +39,7 @@
             this.cbQuantidade = new System.Windows.Forms.CheckBox();
             this.cbUmaLeituraPorLocalizacao = new System.Windows.Forms.CheckBox();
             this.cbContagemNaoCadastrado = new System.Windows.Forms.CheckBox();
+            this.cbSalvarTrocarProduto = new System.Windows.Forms.CheckBox();
             this.SuspendLayout();
             // 
             // mainMenu1
@@ -110,12 +111,21 @@
             this.cbContagemNaoCadastrado.TabIndex = 7;
             this.cbContagemNaoCadastrado.Text = "Contagem de produto nao cadastrado";
             // 
+            // cbSalvarTrocarProduto
+            // 
+            this.cbSalvarTrocarProduto.Location = new System.Drawing.Point(0, 186);
+            this.cbSalvarTrocarProduto.Name = "cbSalvarTrocarProduto";
+            this.cbSalvarTrocarProduto.Size = new System.Drawing.Size(234, 20);
+            this.cbSalvarTrocarProduto.TabIndex = 10;
+            this.cbSalvarTrocarProduto.Text = "Salvar ao trocar de produto";
+            // 
             // ViewParametros
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(96F, 96F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Dpi;
             this.AutoScroll = true;
             this.ClientSize = new System.Drawing.Size(240, 188);
+            this.Controls.Add(this.cbSalvarTrocarProduto);
             this.Controls.Add(this.cbContagemNaoCadastrado);
             this.Controls.Add(this.cbUmaLeituraPorLocalizacao);
             this.Controls.Add(this.cbQuantidade);
@@ -142,5 +152,6 @@
         private System.Windows.Forms.CheckBox cbQuantidade;
         private System.Windows.Forms.CheckBox cbUmaLeituraPorLocalizacao;
         private System.Windows.Forms.CheckBox cbContagemNaoCadastrado;
+        private System.Windows.Forms.CheckBox cbSalvarTrocarProduto;
     }
 }
